@@ -1,7 +1,7 @@
 //
 // Created by sjwel on 11/18/2019.
 //
-
+#include <string>
 #ifndef POKEMONCOMPBUILDER_POKEMON_H
 #define POKEMONCOMPBUILDER_POKEMON_H
 class Pokemon{
