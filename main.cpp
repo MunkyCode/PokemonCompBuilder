@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include "Pokemon.h"
+#include "pokemonData.csv"
 //COMMENT to boost my commit and contributions
 
 void printToFile(std::string fileName){
@@ -22,11 +24,28 @@ std::ifstream infile(fileName);
     }
 }
 
+void pokemonFromString(std::string line);
+
+void testPokemonFromFile(std::string fileName){
+    std::ifstream inFile("pokemonData.csv");
+    if(inFile){
+        while(inFile){
+            std::string line;
+            getline(inFile, line);
+            pokemonFromString(line);
+        }
+    }
+}
+
+void pokemonFromString(std::string line){
+
+}
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    printToFile("testFile.txt");
-    printFromFile("testFile.txt");
+    //std::cout << "Hello, World!" << std::endl;
+    //printToFile("testFile.txt");
+    //printFromFile("testFile.txt");
+    testPokemonFromFile("PokemonData.csv");
 
 
 
