@@ -1,0 +1,9 @@
+1,Bulbasaur,grass,poison,"['Overgrow', 'Chlorophyll']",1,Monster,Grass
+2,Ivysaur,grass,poison,"['Overgrow', 'Chlorophyll']",1,Monster,Grass
+3,Venusaur,grass,poison,"['Overgrow', 'Chlorophyll']",1,Monster,Grass
+4,Charmander,fire,,"['Blaze', 'Solar Power']",1,Monster,Dragon
+5,Charmeleon,fire,,"['Blaze', 'Solar Power']",1,Monster,Dragon
+6,Charizard,fire,flying,"['Blaze', 'Solar Power']",1,Monster,
+7,Squirtle,water,,"['Torrent', 'Rain Dish']",1,Monster,Water 1
+8,Wartortle,water,,"['Torrent', 'Rain Dish']",1,Monster,Water 1
+9,Blastoise,water,,"['Torrent', 'Rain Dish']",1,Monster,Water 1
