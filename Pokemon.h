@@ -15,22 +15,25 @@ private:
 
     //Pokemon type
     std::string type;
+    std::string type2;
 
     //pokemon ability
     std::string ability;
 
-    //Generation that the pokemon first occured in
+    //Generation that the pokemon first occurred in
     int generation;
 
     //Pokemon egg group. Pokemon can breed within their egg group
     std::string eggGroup;
 public:
     //constructor
+    //ToDO: update this to include all params.
     Pokemon(std::string nameIn, int pokedexIn, std::string typeIn);
 
     //Getters
     std::string getName();
     int getPokedex();
+    //returns both types as one string
     std::string getType();
     int getGeneration();
     std::string getAbility();
