@@ -3,4 +3,4 @@ project(PokemonCompBuilder)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(PokemonCompBuilder main.cpp PokemonData.csv Pokemon.cpp)
+add_executable(PokemonCompBuilder main.cpp PokemonData.csv Pokemon.cpp FileLibrary.h)
