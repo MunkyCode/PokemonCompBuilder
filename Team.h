@@ -9,7 +9,6 @@
 #ifndef POKEMONCOMPBUILDER_TEAM_H
 #define POKEMONCOMPBUILDER_TEAM_H
 
-#endif //POKEMONCOMPBUILDER_TEAM_H
 
 Class Team{
 private:
@@ -44,3 +43,6 @@ public:
     std::string displayTeam();
 
 };
+
+
+#endif //POKEMONCOMPBUILDER_TEAM_H

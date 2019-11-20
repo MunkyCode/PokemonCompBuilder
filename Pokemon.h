@@ -7,7 +7,7 @@
 class Pokemon{
 private:
 
-    //Name of Poekmon
+    //Name of Pokemon
     std::string name;
 
     //Pokedex Number
@@ -43,4 +43,5 @@ public:
     // and the efficiences are .25,.5,1,2 and 4 depending on the move.
     float* GetEffectiveTypes();
 };
+
 #endif //POKEMONCOMPBUILDER_POKEMON_H
