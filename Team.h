@@ -2,9 +2,9 @@
 // Created by elimr on 11/20/2019.
 //
 
-#include <iostream>
-#include pokemon.h
-#include <string>
+#include <iostream>;
+#include "pokemon.h";
+#include <string>;
 
 #ifndef POKEMONCOMPBUILDER_TEAM_H
 #define POKEMONCOMPBUILDER_TEAM_H
