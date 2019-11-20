@@ -8,10 +8,10 @@
 #ifndef POKEMONCOMPBUILDER_FILELIBRARY_H
 #define POKEMONCOMPBUILDER_FILELIBRARY_H
 
-void printToFile(std::string fileName, Pokemon* pokeList, int size);
-void printToFile(std::string fileName, Team* teamList, int size);
-Pokemon* readFromFilePokemon(std::string fileName);
-Team* readFromFileTeam(std::string fileName;)
+void printToFilePokemon(std::string fileName, ArrayList* pokeList, int size);
+void printToFileTeam(std::string fileName, ArrayList* teamList int size);
+ArrayList* readFromFilePokemon(std::string fileName);
+ArrayList* readFromFileTeam(std::string fileName;)
 
 
 #endif //POKEMONCOMPBUILDER_FILELIBRARY_H
