@@ -19,15 +19,28 @@ private:
 public:
     Team();
 
+    //Destructor
     ~Team();
 
+    //Copy Constructor
     Team(const Team& TeamToCopy);
 
+    //Assignment Operator
     Team& operator=(const Team& TeamToCopy);
 
-    void addPokemon(pokemon* pokemonToAdd);
+    /**
+     * @param
+     */
+    void addPokemon(const pokemon* const pokemonToAdd);
 
-    void removePokemon(pokemon* pokemonToRemove);
+    /**
+     *
+     */
+    void removePokemon(const pokemon* const pokemonToRemove);
 
+    /**
+     * @return string list of pokemon in the team
+     */
     std::string displayTeam();
+
 };
