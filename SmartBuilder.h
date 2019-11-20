@@ -9,6 +9,10 @@
 #ifndef POKEMONCOMPBUILDER_SMARTBUILDER_H
 #define POKEMONCOMPBUILDER_SMARTBUILDER_H
 
+void smartTeamFill(Team& teamTofill);
 
+Team* createTeamCounter(const Team& teamToCounter, std::string teamName);
+
+Team* createBalancedTeam(std::string teamName);
 
 #endif //POKEMONCOMPBUILDER_SMARTBUILDER_H
