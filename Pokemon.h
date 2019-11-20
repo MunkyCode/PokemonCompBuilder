@@ -32,6 +32,9 @@ public:
     std::string getName();
     int getPokedex();
     std::string getType();
+    int getGeneration();
+    std::string getAbility();
+    std::string getEggGroup();
 
     //To string
     std::string toString();
