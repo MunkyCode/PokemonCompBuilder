@@ -3,10 +3,11 @@
 //
 #include "Pokemon.h"
 
-Pokemon::Pokemon(std::string nameIn, int pokedexIn, std::string typeIn) {
+Pokemon::Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::string type2In, std::string abilityIn, int generationIn) {
     this->name = nameIn;
     this->pokedex = pokedexIn;
     this->type = typeIn;
+    this->
 }
 
 std::string Pokemon::getName(){

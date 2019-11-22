@@ -27,8 +27,7 @@ private:
     std::string eggGroup;
 public:
     //constructor
-    //ToDO: update this to include all params.
-    Pokemon(std::string nameIn, int pokedexIn, std::string typeIn);
+    Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::string type2In, std::string abilityIn, int generationIn, std::string eggGroupIn);
 
     //Getters
     std::string getName();
