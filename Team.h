@@ -13,7 +13,7 @@
 class Team{
 private:
     int* pokemonArray;
-    std::string name
+    std::string name;
 
 public:
     Team();
@@ -30,12 +30,12 @@ public:
     /**
      * @param
      */
-    void addPokemon(const pokemon* const pokemonToAdd);
+    void addPokemon(const Pokemon* const pokemonToAdd);
 
     /**
      *
      */
-    void removePokemon(const pokemon* const pokemonToRemove);
+    void removePokemon(const Pokemon* const pokemonToRemove);
 
     /**
      * @return string list of pokemon in the team
