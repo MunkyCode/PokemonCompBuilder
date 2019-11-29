@@ -10,7 +10,7 @@
 #define POKEMONCOMPBUILDER_TEAM_H
 
 
-Class Team{
+class Team{
 private:
     int* pokemonArray;
     std::string name
