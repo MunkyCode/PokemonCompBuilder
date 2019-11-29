@@ -16,26 +16,26 @@
  * @param size
  * @throws IDK my exeptions but wrong type if not a pokemon list
  */
-void printToFilePokemon(std::string fileName, ArrayList<Pokemon>* pokeList, int size);
+void printToFilePokemon(std::string fileName, ArrayList<Pokemon*>* pokeList, int size);
 /**
  *
  * @param fileName
  * @param teamList
  * @param size
  */
-void printToFileTeam(std::string fileName, ArrayList<Team>* teamList, int size);
+void printToFileTeam(std::string fileName, ArrayList<Team*>* teamList, int size);
 /**
  *
  * @param fileName
  * @return
  */
-ArrayList<Pokemon>* readFromFilePokemon(std::string fileName);
+ArrayList<Pokemon*>* readFromFilePokemon(std::string fileName);
 /**
  *
  * @param fileName
  * @return
  */
-ArrayList<Team>* readFromFileTeam(std::string fileName);
+ArrayList<Team*>* readFromFileTeam(std::string fileName);
 
 
 #endif //POKEMONCOMPBUILDER_FILELIBRARY_H
