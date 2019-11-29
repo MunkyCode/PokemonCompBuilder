@@ -2,6 +2,8 @@
 // Created by sjwel on 11/29/2019.
 //
 #include<string>
+#include <stdexcept>
+
 #ifndef POKEMONCOMPBUILDER_ARRAYLIST_H
 #define POKEMONCOMPBUILDER_ARRAYLIST_H
 template <class T>
@@ -45,6 +47,9 @@ public:
      * @throws an std::invalid_argument exception if size < 1
      */
     ArrayList(int initialCapacity){
+        if(initialCapacity < 1){
+            throw std::invalid_argument("Initial Capacity has to be at least 1");
+        }
         currItemCount = 0;
         currCapacity = initialCapacity;
         array = new T[initialCapacity];
@@ -80,7 +85,13 @@ public:
      * appends the new item to the end of the list
      * @post the list has an additional value in it, at the end
      */
-    void insertAtEnd(T itemToAdd);
+    void insertAtEnd(T itemToAdd){
+        if(currItemCount >= currCapacity){
+            this->doubleCapacity();
+        }
+        array[currItemCount] = itemToAdd;
+        currItemCount++;
+    }
 
     /**
      * gets a value from the list
@@ -88,51 +99,82 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if index is invalid
      */
-    T getValueAt(int index);
-
-    /**
-     * gives a string representation of the current list
-     * @returns a string representing the given list in the exact format shown below
-     * {1, 2, 3, 4, 5}
-     */
-    std::string toString();
+    T getValueAt(int index){
+        if(index > currItemCount-1||index < 0){
+            throw std::out_of_range("No Such Index");
+        }
+        return array[index];
+    }
 
     /**
      * checks if there are any valid items in the list
      * @return true if there are no valid items in the list, false otherwise
      */
-    bool isEmpty();
+    bool isEmpty(){
+        return currItemCount <= 0;
+    }
 
     /**
      * returns a count of valid items currently in the list
      * @returns the number of valid items in the list
      */
-    int itemCount();
+    int itemCount(){
+        return currItemCount;
+    }
 
     /**
      * makes the list empty of valid items
      * @post the list is empty, such that isEmpty() == true
      */
-    void clearList();
+    void clearList(){
+        currItemCount = 0;
+        if(currCapacity > 50){
+            delete[] array;
+            array = new T[50];
+        }
+    }
 
     /**
      * Searches an int array for a certain value
      * @return the index of the first occurrence of numToFind if it is present, otherwise returns -1
      */
-    int find(T toFind);
+    int find(T toFind){
+        for(int x = 0; x < currItemCount; x ++){
+            if(array[x] == toFind){
+                return x;
+            }
+        }
+        return -1;
+    }
 
     /**
      * Searches an int array for a certain value
      * @return the index of the last occurrence of numToFind if it is present, otherwise returns -1
      */
-    int findLast(T toFind);
+    int findLast(T toFind){
+        for(int x = currItemCount; x > 0; x--){
+            if(array[x-1] == toFind){
+                return x-1;
+            }
+        }
+        return -1;
+    }
 
     /**
      * appends the new item to the beginning of the list
      * @post the list has an additional value in it, at the beginning
      *    all other items are shifted down by one index
      */
-    void insertAtFront(T itemToAdd);
+    void insertAtFront(T itemToAdd){
+        if(currItemCount>=currCapacity){
+            this->doubleCapacity();
+        }
+        for(int x = currItemCount; x > 0; x--){
+            array[x] = array[x-1];
+        }
+        currItemCount++;
+        array[0] = itemToAdd;
+    }
 
     /**
      * inserts the item into the list so that it can be found with get(index)
@@ -141,7 +183,19 @@ public:
      *        all further values have been shifted down by one index
      * @throws out_of_range exception if index is invalid (< 0 or > currItemCount)
      */
-    void insertAt(T itemToAdd, int index);
+    void insertAt(T itemToAdd, int index){
+        if(index < 0 || index > currItemCount){
+            throw std::out_of_range("No Such Index");
+        }
+        if(currItemCount >= currCapacity){
+            this->doubleCapacity();
+        }
+        for(int x =  currItemCount; x > index; x--){
+            array[x]=array[x-1];
+        }
+        currItemCount++;
+        array[index] = itemToAdd;
+    }
 
     /**
      * removes the item at the end of the list, and returns a copy of that item
@@ -149,7 +203,16 @@ public:
      * @return a copy of the item at the end
      * @throws out_of_range exception if there is no item to remove
      */
-    T removeValueAtEnd();
+    T removeValueAtEnd(){
+        if(currItemCount <=0){
+            throw std::out_of_range("No Item To Remove");
+        }
+        if(currItemCount < currCapacity/4){
+            this->halfCapacity();
+        }
+        currItemCount--;
+        return array[currItemCount];
+    }
 
     /**
      * removes the item at the front of the list, and returns a copy of that item
@@ -157,7 +220,20 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if there is no item to remove
      */
-    T removeValueAtFront();
+    T removeValueAtFront(){
+        if(currItemCount <= 0){
+            throw std::out_of_range("No Item To Remove");
+        }
+        if(currItemCount < currCapacity/4){
+            this->halfCapacity();
+        }
+        T returnVal = array[0];
+        for(int x = 0; x < currItemCount-1; x ++){
+            array[x] = array[x+1];
+        }
+        currItemCount--;
+        return returnVal;
+    }
 
     /**
      * removes the item at index from the list, and returns a copy of that item
@@ -166,6 +242,19 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if index is invalid
      */
-    T removeValueAt(T index);
+    T removeValueAt(T index){
+        if(index > currItemCount-1||index<0){
+            throw std::out_of_range("No Such Index");
+        }
+        if(currItemCount < currCapacity/4){
+            this->halfCapacity();
+        }
+        T returnVal = array[index];
+        for(int x = index; x < currItemCount-1; x++){
+            array[x] = array[x+1];
+        }
+        currItemCount--;
+        return returnVal;
+    }
 };
 #endif //POKEMONCOMPBUILDER_ARRAYLIST_H
