@@ -14,6 +14,7 @@ class Team{
 private:
     int* pokemonArray;
     std::string name;
+    int size;
 
 public:
     Team();
