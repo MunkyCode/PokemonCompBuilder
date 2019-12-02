@@ -28,6 +28,9 @@
         if(index != -1){
             pokemonArray->removeValueAt(index);
         }
+        else{
+            throw std::invalid_argument("Pokemon Not Found");
+        }
     }
 
 
