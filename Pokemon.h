@@ -24,13 +24,13 @@ private:
     int generation;
 
     //Pokemon egg group. Pokemon can breed within their egg group
-    std::string eggGroup;
+    //std::string eggGroup;
 
     //Array of type effectivness
     float* typeEffectivness;
 public:
     //constructor
-    Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::string type2In, std::string abilityIn, int generationIn, std::string eggGroupIn);
+    Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::string type2In, std::string abilityIn, int generationIn);
     ~Pokemon();
     Pokemon(const Pokemon& toCopy);
     Pokemon& operator=(const Pokemon& toCopy);

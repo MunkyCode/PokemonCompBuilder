@@ -5,14 +5,14 @@
 #include "TypeEffectiveness.cpp"
 #include "ArrayList.h"
 
-Pokemon::Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::string type2In, std::string abilityIn, int generationIn, std::string eggGroupIn) {
+Pokemon::Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::string type2In, std::string abilityIn, int generationIn) {
     this->name = nameIn;
     this->pokedex = pokedexIn;
     this->type = typeIn;
     this->type2 = type2In;
     this->ability = abilityIn;
     this->generation = generationIn;
-    this-> eggGroup = eggGroupIn;
+    //this-> eggGroup = eggGroupIn;
     this->typeEffectivness = new float[18];
     int array1Index, array2Index;
     for(int x = 0; x < 19; x++){
@@ -70,9 +70,9 @@ std::string Pokemon::getAbility(){
     return ability;
 }
 
-std::string Pokemon::getEggGroup(){
+/*std::string Pokemon::getEggGroup(){
     return eggGroup;
-}
+}*/
 
 std::string Pokemon::toString(){
     //TODO
