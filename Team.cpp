@@ -8,35 +8,35 @@
 #include "ArrayList.h"
 
     Team::Team(std::string NameIn){
-        this->pokemonArray = new ArrayList<Pokemon*>(6);
-        this->size = 0;
+        this->pokemonArray = new ArrayList<const Pokemon*>(6);
         this->name = NameIn;
     }
 
 
-    void addPokemon(const Pokemon* const pokemonToAdd){
-        pokemonArray[size] = pokemonToAdd;
-        size+=1;
+    void Team::addPokemon(Pokemon* const pokemonToAdd){
+        pokemonArray->insertAtEnd(pokemonToAdd);
     }
 
     /**
      *
      */
-    void removePokemon(const Pokemon* const pokemonToRemove);
+    void Team::removePokemon(Pokemon* const pokemonToRemove){
+        int index = pokemonArray->find(pokemonToRemove);
+        pokemonArray->removeValueAt(index);
 
     /**
      * @return string list of pokemon in the team
      */
 
-    pokemon::getPokemon(int index){
-        return pokemonArray[index]
+    const Pokemon* Team::getPokemon(int index){
+        return pokemonArray->getValueAt(index);
     }
     std::string displayTeam();
 
-    float* getEffectiveTypes() {
+    float* Team::getEffectiveTypes() {
         float* effectiveArray[18];
         for (int x = 0; x < 18; x++) {
-            effectiveArray[x] = 1.0;
+            effectiveArray[x] = 1;
         }
         for (int i = 0; i < size; i++) {
             for (int y = 0; y < 18; y++) {
@@ -48,5 +48,3 @@
 
 };
 
-
-#endif //POKEMONCOMPBUILDER_TEAM_H
