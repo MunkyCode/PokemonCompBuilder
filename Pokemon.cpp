@@ -81,7 +81,6 @@ std::string Pokemon::toString(){
 //Returns a list of type efficiencies. Each type is corrolated with a number
 // return list must be deleted by calling function.
 // and the efficiences are .25,.5,1,2 and 4 depending on the move.
-float* Pokemon::GetEffectiveTypes(){
+float* Pokemon::getEffectiveTypes(){
     return typeEffectivness;
-    //TODOew
 }

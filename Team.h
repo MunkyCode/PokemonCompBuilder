@@ -47,7 +47,7 @@ public:
     const Pokemon* getPokemon(int Index);
 
     //Returns type effectivenss of the team
-    float* Team::getEffectiveTypes();
+    float* getEffectiveTypes();
 
 };
 

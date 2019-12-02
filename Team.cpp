@@ -46,8 +46,9 @@
             effectiveArray[x] = 1;
         }
         for (int i = 0; i < pokemonArray->itemCount(); i++) {
-            for (int y = 0; y < 18; y++) {
-                effectiveArray[y] = effectiveArray[y] * pokemonArray->getValueAt(i)->GetEffectiveTypes()[y];
+            float* currPoke = const_cast<Pokemon*>(pokemonArray->getValueAt(i))->getEffectiveTypes();
+            for(int x = 0; x < 18; x++){
+                effectiveArray[x] *=currPoke[x];
             }
         }
         return effectiveArray;

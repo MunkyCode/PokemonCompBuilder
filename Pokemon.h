@@ -49,7 +49,7 @@ public:
 
     //Returns a list of type efficiencies. Each type is corrolated with a number
     // and the efficiences are .25,.5,1,2 and 4 depending on the move.
-    float* GetEffectiveTypes();
+    float* getEffectiveTypes();
 };
 
 #endif //POKEMONCOMPBUILDER_POKEMON_H
