@@ -242,7 +242,7 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if index is invalid
      */
-    T removeValueAt(T index){
+    T removeValueAt(int index){
         if(index > currItemCount-1||index<0){
             throw std::out_of_range("No Such Index");
         }
