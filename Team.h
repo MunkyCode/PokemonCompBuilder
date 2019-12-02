@@ -5,6 +5,7 @@
 #include <iostream>;
 #include "pokemon.h";
 #include <string>;
+#include "ArrayList.h";
 
 #ifndef POKEMONCOMPBUILDER_TEAM_H
 #define POKEMONCOMPBUILDER_TEAM_H
@@ -12,12 +13,12 @@
 
 class Team{
 private:
-    int* pokemonArray;
+    ArrayList<Pokemon*>* pokemonArray;
     std::string name;
     int size;
 
 public:
-    Team();
+    Team(std::string NameIN);
 
     //Destructor
     ~Team();
