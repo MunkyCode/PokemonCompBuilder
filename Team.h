@@ -31,12 +31,12 @@ public:
     /**
      * @param
      */
-    void addPokemon( Pokemon* const pokemonToAdd);
+    void addPokemon(const Pokemon* pokemonToAdd);
 
     /**
      *
      */
-    void removePokemon(Pokemon* const pokemonToRemove);
+    void removePokemon(const Pokemon* pokemonToRemove);
 
     /**
      * @return string list of pokemon in the team
