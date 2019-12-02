@@ -41,13 +41,13 @@
     std::string displayTeam();
 
     float* Team::getEffectiveTypes() {
-        float* effectiveArray[18];
+        float* effectiveArray = new float(18);
         for (int x = 0; x < 18; x++) {
             effectiveArray[x] = 1;
         }
         for (int i = 0; i < pokemonArray->itemCount(); i++) {
             for (int y = 0; y < 18; y++) {
-                effectiveArray[y] = effectiveArray[y] * this.getPokemon[i].GetEffectiveTypes;
+                effectiveArray[y] = effectiveArray[y] * pokemonArray->getValueAt(i)->GetEffectiveTypes()[y];
             }
         }
         return effectiveArray;
