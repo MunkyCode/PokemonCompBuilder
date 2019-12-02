@@ -3,13 +3,13 @@
 //
 #include "Pokemon.h"
 #include "TypeEffectiveness.cpp"
-#include "ArrayListFunctions.cpp"
+#include "ArrayList.h"
 
 Pokemon::Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::string type2In, std::string abilityIn, int generationIn) {
     this->name = nameIn;
     this->pokedex = pokedexIn;
     this->type = typeIn;
-    this->
+    this->type2 = type2In;
 }
 
 std::string Pokemon::getName(){
@@ -44,9 +44,10 @@ std::string Pokemon::toString(){
 // and the efficiences are .25,.5,1,2 and 4 depending on the move.
 float* GetEffectiveTypes(){
     int* finalArray[18];
-    int* array1 = typeArrays[types.find(type)]
+    int* array1 = arrays[types.find(type)];
+    int* array2 = arrays[types.find(type2)];
     for(int i=0;i<18;i++){
-        finalArray[i] = Array1[i]*Array2[i];
+        finalArray[i] = array1[i]*array2[i];
     }
     return finalArray;
     //TODOew
