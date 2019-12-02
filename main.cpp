@@ -24,7 +24,7 @@ std::ifstream infile(fileName);
     }
 }
 
-void pokemonFromString(std::string line);
+//void pokemonFromString(std::string line);
 
 void testPokemonFromFile(std::string fileName){
     std::ifstream inFile("pokemonData.csv");
@@ -32,7 +32,7 @@ void testPokemonFromFile(std::string fileName){
         while(inFile){
             std::string line;
             getline(inFile, line);
-            pokemonFromString(line);
+            //pokemonFromString(line);
         }
     }
 }
