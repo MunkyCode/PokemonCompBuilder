@@ -62,6 +62,10 @@ std::string Pokemon::getType(){
     return type;
 }
 
+std::string Pokemon::getType2(){
+    return type2;
+}
+
 int Pokemon::getGeneration(){
     return generation;
 }

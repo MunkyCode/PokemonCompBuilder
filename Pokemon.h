@@ -40,6 +40,7 @@ public:
     int getPokedex();
     //returns both types as one string
     std::string getType();
+    std::string getType2();
     int getGeneration();
     std::string getAbility();
     std::string getEggGroup();
