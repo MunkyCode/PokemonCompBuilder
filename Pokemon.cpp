@@ -14,7 +14,7 @@ Pokemon::Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::str
     this->generation = generationIn;
     //this-> eggGroup = eggGroupIn;
     this->typeEffectivness = new float[18];
-    int array1Index, array2Index;
+    int array1Index = 0, array2Index = 0;
     for(int x = 0; x < 19; x++){
         if(types[x] == this->type){
             array1Index = x;
