@@ -36,7 +36,7 @@ public:
     /**
      *
      */
-    void removePokemon(const Pokemon* const pokemonToRemove);
+    void removePokemon(Pokemon* const pokemonToRemove);
 
     /**
      * @return string list of pokemon in the team
