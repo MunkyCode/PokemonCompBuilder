@@ -10,7 +10,45 @@ Pokemon::Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::str
     this->pokedex = pokedexIn;
     this->type = typeIn;
     this->type2 = type2In;
+    this->ability = abilityIn;
+    this->generation = generationIn;
+    this-> eggGroup = eggGroupIn;
+    this->typeEffectivness = new float[18];
+    int array1Index, array2Index;
+    for(int x = 0; x < 19; x++){
+        if(types[x] == this->type){
+            array1Index = x;
+        }
+        if(types[x] == this-> type2){
+            array2Index = x;
+        }
+    }
+    float* array1 = arrays[array1Index];
+    float* array2 = arrays[array2Index];
+    for(int i=0;i<18;i++){
+        this->typeEffectivness[i] = array1[i]*array2[i];
+    }
 }
+Pokemon::~Pokemon(){
+    delete[] typeEffectivness;
+}
+
+Pokemon& Pokemon::operator=(const Pokemon &toCopy) {
+    delete[] typeEffectivness;
+    typeEffectivness = new float[18];
+    for(int x = 0; x < 18; x++){
+        typeEffectivness[x] = toCopy.typeEffectivness[x];
+    }
+    return *this;
+}
+
+Pokemon::Pokemon(const Pokemon &toCopy) {
+    typeEffectivness = new float[18];
+    for(int i = 0; i<18; i++){
+        typeEffectivness[i] = toCopy.typeEffectivness[i];
+    }
+}
+
 
 std::string Pokemon::getName(){
     return name;
@@ -24,15 +62,15 @@ std::string Pokemon::getType(){
     return type;
 }
 
-int getGeneration(){
+int Pokemon::getGeneration(){
     return generation;
 }
 
-std::string getAbility(){
+std::string Pokemon::getAbility(){
     return ability;
 }
 
-std::string getEggGroup(){
+std::string Pokemon::getEggGroup(){
     return eggGroup;
 }
 
@@ -44,21 +82,6 @@ std::string Pokemon::toString(){
 // return list must be deleted by calling function.
 // and the efficiences are .25,.5,1,2 and 4 depending on the move.
 float* Pokemon::GetEffectiveTypes(){
-    float* finalArray = new float[18];
-    int array1Index, array2Index;
-    for(int x = 0; x < 19; x++){
-        if(types[x] == this->type){
-            array1Index = x;
-        }
-        if(types[x] == this-> type2){
-            array2Index = x;
-        }
-    }
-    float* array1 = arrays[array1Index];
-    float* array2 = arrays[array2Index];
-    for(int i=0;i<18;i++){
-        finalArray[i] = array1[i]*array2[i];
-    }
-    return finalArray;
+    return typeEffectivness;
     //TODOew
 }
