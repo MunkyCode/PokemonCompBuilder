@@ -48,8 +48,8 @@ public:
     //To string
     std::string toString();
 
-    //Returns a list of type efficiencies. Each type is corrolated with a number
-    // and the efficiences are .25,.5,1,2 and 4 depending on the move.
+    //Returns a list of type efficiencies. Each type is correlated with a number
+    // and the efficiencies are .25,.5,1,2 and 4 depending on the move.
     float* getEffectiveTypes();
 };
 

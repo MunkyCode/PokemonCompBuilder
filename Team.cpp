@@ -12,6 +12,26 @@
         this->name = NameIn;
     }
 
+    Team::~Team(){
+        delete [] pokemonArray;
+    }
+
+    Team::Team(const Team& TeamToCopy){
+        pokemonArray = new ArrayList<const Pokemon*>(6);
+        for(int i = 0; i < 6; i++){
+            pokemonArray[i] = TeamToCopy.pokemonArray[i];
+        }
+    }
+
+
+    Team& Team::operator=(const Team& TeamToCopy){
+        delete [] pokemonArray;
+        pokemonArray = new ArrayList<const Pokemon*>(6);
+        for(int i = 0; i < 6; i++){
+            pokemonArray[i] = TeamToCopy.pokemonArray[i];
+        }
+    }
+
 
     void Team::addPokemon(const Pokemon* pokemonToAdd){
         if(pokemonArray->itemCount() >= 6){
@@ -33,15 +53,23 @@
         }
     }
 
-
     /**
      * @return string list of pokemon in the team
      */
+    std::string displayTeam(){
+        std::string team = "";
+        for (int i = 0; i < 5; i++){
+            team += pokemonArray?? getPokemon??? smth here[i] + ", ";
+        }
+        team += whateverGoesHere[i];
+        return team;
+    }
+
 
     const Pokemon* Team::getPokemon(int index){
         return pokemonArray->getValueAt(index);
     }
-    std::string displayTeam();
+
 
     float* Team::getEffectiveTypes() {
         float* effectiveArray = new float(18);
