@@ -7,15 +7,18 @@
 #include <string>
 #include "ArrayList.h"
 
+    //Constructor
     Team::Team(std::string NameIn){
         this->pokemonArray = new ArrayList<const Pokemon*>(6);
         this->name = NameIn;
     }
 
+    //Destructor
     Team::~Team(){
         delete [] pokemonArray;
     }
 
+    //Copy Constructor
     Team::Team(const Team& TeamToCopy){
         pokemonArray = new ArrayList<const Pokemon*>(6);
         for(int i = 0; i < 6; i++){
@@ -23,7 +26,7 @@
         }
     }
 
-
+    //Assignment Operator
     Team& Team::operator=(const Team& TeamToCopy){
         delete [] pokemonArray;
         pokemonArray = new ArrayList<const Pokemon*>(6);
@@ -33,6 +36,11 @@
     }
 
 
+    /**
+     * Adds a pokemon to pokemon array
+    * @param pokemonToAdd
+     * @throws exception if array is larger than 6 (team is full)
+    */
     void Team::addPokemon(const Pokemon* pokemonToAdd){
         if(pokemonArray->itemCount() >= 6){
             throw std::invalid_argument("Team is Full");
@@ -41,7 +49,9 @@
     }
 
     /**
-     *
+     * Removes a specific pokemon from pokemon array
+     * @param name of pokemon to remove
+     * @throws exception if pokemon is not in array
      */
     void Team::removePokemon(const Pokemon* pokemonToRemove){
         int index = pokemonArray->find(pokemonToRemove);
@@ -66,6 +76,9 @@
     }
 
 
+    /**
+     * @return Ability of current Pokemon
+     */
     const Pokemon* Team::getPokemon(int index){
         return pokemonArray->getValueAt(index);
     }
