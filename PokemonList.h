@@ -8,7 +8,7 @@
 class PokemonList{
         private:
         //pointer to the start of the array
-        Pokemon* array;
+        Pokemon **array;
         //count of the number of valid items currently stored in the array
         int currItemCount;
         //size of the current array
@@ -22,10 +22,10 @@ class PokemonList{
          */
         void doubleCapacity(){
             currCapacity *= 2;
-            Pokemon *temp = array;
-            array = new Pokemon[currCapacity];
+            Pokemon* *temp = array;
+            array = new Pokemon*[currCapacity];
             for (int x = 0; x < currItemCount; x++) {
-                array[x] = temp[x];
+                array[x] = temp*[x];
             }
             delete[] temp;
         }
@@ -44,7 +44,7 @@ class PokemonList{
          * Constructor
          * @throws an std::invalid_argument exception if size < 1
          */
-        ArrayList(int initialCapacity){
+        PokemonList(int initialCapacity){
             if (initialCapacity < 1) {
                 throw std::invalid_argument("Initial Capacity has to be at least 1");
             }
@@ -54,7 +54,7 @@ class PokemonList{
         }
 
         //Copy Constructor
-        ArrayList(const ArrayList& toCopy){
+        PokemonList(const PokemonList& toCopy){
             currCapacity = toCopy.currCapacity;
             currItemCount = toCopy.currItemCount;
             array = new Pokemon*[currCapacity];
@@ -64,7 +64,7 @@ class PokemonList{
         }
 
         //Overloaded Assignment Operator
-        ArrayList& operator=(const ArrayList& toCopy){
+        PokemonList& operator=(const PokemonList& toCopy){
             delete[] array;
             currCapacity = toCopy.currCapacity;
             currItemCount = toCopy.currItemCount;
@@ -75,20 +75,29 @@ class PokemonList{
         }
 
         //Destructor
-        ~ArrayList(){
+        ~PokemonList(){
             delete[] array;
         }
 
-        /**
-         * appends the new item to the end of the list
-         * @post the list has an additional value in it, at the end
-         */
-        void insertAtEnd(Pokemon* itemToAdd){
-            if (currItemCount >= currCapacity) {
-                this->doubleCapacity();
+        void insertPokemon(Pokemon* itemToAdd){
+            if(currItemCount >= currCapacity){
+                doubleCapacity();
             }
-            array[currItemCount] = itemToAdd;
-            currItemCount++;
+            if(currItemCount <= 0){
+                array[0] = itemToAdd;
+            }
+            else{
+                bool sorted = false;
+                int iteration = 0;
+                while(!(sorted||iteration>=currItemCount)){
+                    if(itemToAdd->getName() < array[iteration]->getName()){
+                        //TODO finish this shit. It gotta do the move things over and put before them alllll. Otherwise it adds to end.
+                    }
+                }
+                {
+
+                }
+            }
         }
 
         /**
@@ -145,6 +154,8 @@ class PokemonList{
             return -1;
         }
 
+
+
         /**
          * Searches an int array for a certain value
          * @return the index of the last occurrence of numToFind if it is present, otherwise returns -1
@@ -156,43 +167,6 @@ class PokemonList{
                 }
             }
             return -1;
-        }
-
-        /**
-         * appends the new item to the beginning of the list
-         * @post the list has an additional value in it, at the beginning
-         *    all other items are shifted down by one index
-         */
-        void insertAtFront(Pokemon* itemToAdd){
-            if (currItemCount >= currCapacity) {
-                this->doubleCapacity();
-            }
-            for (int x = currItemCount; x > 0; x--) {
-                array[x] = array[x - 1];
-            }
-            currItemCount++;
-            array[0] = itemToAdd;
-        }
-
-        /**
-         * inserts the item into the list so that it can be found with get(index)
-         * @param index the location in which to insert this item
-         * @post the list has an additional value in it at the specified index,
-         *        all further values have been shifted down by one index
-         * @throws out_of_range exception if index is invalid (< 0 or > currItemCount)
-         */
-        void insertAt(Pokemon* itemToAdd, int index){
-            if (index < 0 || index > currItemCount) {
-                throw std::out_of_range("No Such Index");
-            }
-            if (currItemCount >= currCapacity) {
-                this->doubleCapacity();
-            }
-            for (int x = currItemCount; x > index; x--) {
-                array[x] = array[x - 1];
-            }
-            currItemCount++;
-            array[index] = itemToAdd;
         }
 
         /**
