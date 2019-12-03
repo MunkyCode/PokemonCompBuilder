@@ -256,5 +256,6 @@ public:
         currItemCount--;
         return returnVal;
     }
+    //TODO add sort and find functions for specific types.
 };
 #endif //POKEMONCOMPBUILDER_ARRAYLIST_H
