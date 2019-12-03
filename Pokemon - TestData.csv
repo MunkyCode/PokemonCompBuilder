@@ -1,9 +1,10 @@
-1,Bulbasaur,grass,poison,"['Overgrow', 'Chlorophyll']",1,Monster,Grass
-2,Ivysaur,grass,poison,"['Overgrow', 'Chlorophyll']",1,Monster,Grass
-3,Venusaur,grass,poison,"['Overgrow', 'Chlorophyll']",1,Monster,Grass
-4,Charmander,fire,,"['Blaze', 'Solar Power']",1,Monster,Dragon
-5,Charmeleon,fire,,"['Blaze', 'Solar Power']",1,Monster,Dragon
-6,Charizard,fire,flying,"['Blaze', 'Solar Power']",1,Monster,
-7,Squirtle,water,,"['Torrent', 'Rain Dish']",1,Monster,Water 1
-8,Wartortle,water,,"['Torrent', 'Rain Dish']",1,Monster,Water 1
-9,Blastoise,water,,"['Torrent', 'Rain Dish']",1,Monster,Water 1
+460,Abomasnow,grass,ice,"['Snow Warning', 'Soundproof']",4
+63,Abra,psychic,null,"['Synchronize', 'Inner Focus', 'Magic Guard']",1
+359,Absol,dark,null,"['Pressure', 'Super Luck', 'Justified']",3
+617,Accelgor,bug,null,"['Hydration', 'Sticky Hold', 'Unburden']",5
+681,Aegislash,steel,ghost,['Stance Change'],6
+142,Aerodactyl,rock,flying,"['Rock Head', 'Pressure', 'Unnerve']",1
+306,Aggron,steel,rock,"['Sturdy', 'Rock Head', 'Heavy Metal']",3
+190,Aipom,normal,null,"['Run Away', 'Pickup', 'Skill Link']",2
+65,Alakazam,psychic,null,"['Synchronize', 'Inner Focus', 'Magic Guard']",1
+594,Alomomola,water,null,"['Healer', 'Hydration', 'Regenerator']",5
