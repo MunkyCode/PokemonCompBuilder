@@ -1,10 +1,10 @@
-460,Abomasnow,grass,ice,"['Snow Warning', 'Soundproof']",4
-63,Abra,psychic,null,"['Synchronize', 'Inner Focus', 'Magic Guard']",1
-359,Absol,dark,null,"['Pressure', 'Super Luck', 'Justified']",3
-617,Accelgor,bug,null,"['Hydration', 'Sticky Hold', 'Unburden']",5
+460,Abomasnow,grass,ice,['Snow Warning'. 'Soundproof'],4
+63,Abra,psychic,null,['Synchronize'. 'Inner Focus'. 'Magic Guard'],1
+359,Absol,dark,null,['Pressure'. 'Super Luck'. 'Justified'],3
+617,Accelgor,bug,null,['Hydration'. 'Sticky Hold'. 'Unburden'],5
 681,Aegislash,steel,ghost,['Stance Change'],6
-142,Aerodactyl,rock,flying,"['Rock Head', 'Pressure', 'Unnerve']",1
-306,Aggron,steel,rock,"['Sturdy', 'Rock Head', 'Heavy Metal']",3
-190,Aipom,normal,null,"['Run Away', 'Pickup', 'Skill Link']",2
-65,Alakazam,psychic,null,"['Synchronize', 'Inner Focus', 'Magic Guard']",1
-594,Alomomola,water,null,"['Healer', 'Hydration', 'Regenerator']",5
+142,Aerodactyl,rock,flying,['Rock Head'. 'Pressure'. 'Unnerve'],1
+306,Aggron,steel,rock,['Sturdy'. 'Rock Head'. 'Heavy Metal'],3
+190,Aipom,normal,null,['Run Away'. 'Pickup'. 'Skill Link'],2
+65,Alakazam,psychic,null,['Synchronize'. 'Inner Focus'. 'Magic Guard'],1
+594,Alomomola,water,null,['Healer'. 'Hydration'. 'Regenerator'],5
