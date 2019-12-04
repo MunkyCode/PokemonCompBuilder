@@ -4,6 +4,7 @@
 #include "Team.h"
 #include "ArrayList.h"
 #include "TestLib.h"
+#include "PokemonList.h"
 //COMMENT to boost my commit and contributions
 
 void printToFile(std::string fileName){
@@ -81,6 +82,17 @@ void testArrayList(){
     std::cout<<pokeList->getValueAt(0)->getName()<<std::endl;
 
 
+}
+
+void testPokemonList(){
+    std::cout<< "--------PokemonList test---------"<<std::endl;
+    std::cout<<"Basic Tests:"<<std::endl;
+    Pokemon* p1 = new Pokemon("Bulbasaur", 1, "grass","poison","['Overgrow', 'Chlorophyll']", 1);
+    Pokemon* p2 = new Pokemon("Squirtle", 7, "water", "", "['Torrent', 'Rain Dish']", 1);
+    Pokemon* p3 = new Pokemon("Charmander", 4, "fire","","['Blaze', 'Solar Power']", 1);
+    PokemonList* pokeList = new PokemonList(4);
+    pokeList->insertAtEnd(p1);
+    std::cout<<pokeList->getValueAt(0)->getName()<<std::endl;
 }
 
 

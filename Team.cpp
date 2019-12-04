@@ -66,12 +66,12 @@
     /**
      * @return string list of pokemon in the team
      */
-    std::string displayTeam(){
+    std::string Team::displayTeam(){
         std::string team = "";
-        for (int i = 0; i < 5; i++){
-            team += pokemonArray?? getPokemon??? smth here[i] + ", ";
+        for (int i = 0; i < pokemonArray->itemCount()-1; i++){
+            team += const_cast<Pokemon*>(pokemonArray->getValueAt(i))->getName() + ", ";
         }
-        team += whateverGoesHere[i];
+        team += const_cast<Pokemon*>(pokemonArray->getValueAt(pokemonArray->itemCount()-1))->getName();
         return team;
     }
 

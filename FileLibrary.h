@@ -38,4 +38,8 @@ ArrayList<Pokemon*>* readFromFilePokemon(std::string fileName);
 ArrayList<Team*>* readFromFileTeam(std::string fileName);
 
 
+//Creates the ar
+ArrayList<Pokemon*>* CreatePokemonList(std::string fileName);
+
+
 #endif //POKEMONCOMPBUILDER_FILELIBRARY_H
