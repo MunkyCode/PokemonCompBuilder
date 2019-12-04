@@ -77,7 +77,8 @@
 
 
     /**
-     * @return Ability of current Pokemon
+     * @param index
+     * @return pokemon name at given index
      */
     const Pokemon* Team::getPokemon(int index){
         return pokemonArray->getValueAt(index);

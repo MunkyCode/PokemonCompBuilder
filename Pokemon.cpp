@@ -104,7 +104,10 @@ std::string Pokemon::getAbility(){
      * @return Current Pokemon with all listed attributes
      */
 std::string Pokemon::toString(){
-    //TODO
+    std::string pokemon = "Name: " + Pokemon->getName + "/n";
+    pokemon += "Pokedex: " + Pokemon->Pokedex + "/n";
+    pokemon += "Pokedex: " + Pokemon->Pokedex + "/n";
+
 }
 
 //Returns a list of type efficiencies. Each type is correlated with a number
