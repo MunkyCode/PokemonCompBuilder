@@ -9,6 +9,7 @@
 #include "Pokemon.h"
 #include"Team.h"
 #include "ArrayList.h"
+#include "PokemonList.h"
 
 
 void printToFile(std::string fileName){
