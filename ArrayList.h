@@ -256,6 +256,6 @@ public:
         currItemCount--;
         return returnVal;
     }
-    //TODO add sort and find functions for specific types.
+    //TODO add sort and find functions for specific types. Done I think... Might need to do something for team and I think that would involve some operators overrides.
 };
 #endif //POKEMONCOMPBUILDER_ARRAYLIST_H

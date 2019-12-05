@@ -13,7 +13,7 @@
 
 class Team{
 private:
-    ArrayList<const Pokemon*>* pokemonArray;
+    ArrayList<const Pokemon*>* pokemonArray; //TODO change this to a pokemonList
     std::string name;
 
 public:
