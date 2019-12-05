@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "pokemon.h"
+#include "Pokemon.h"
 #include <string>
 #include "ArrayList.h"
 

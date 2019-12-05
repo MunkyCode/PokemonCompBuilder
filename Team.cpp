@@ -2,7 +2,7 @@
 // Created by elimr on 11/30/2019.
 //
 #include <iostream>
-#include "pokemon.h"
+#include "Pokemon.h"
 #include "Team.h"
 #include <string>
 #include "ArrayList.h"

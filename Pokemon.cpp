@@ -105,13 +105,9 @@ std::string Pokemon::getAbility(){
      * @return Current Pokemon with all listed attributes
      */
 std::string Pokemon::toString() {
-        std::string pokedex = to_string(getPokedex())
         std::string pokemon =
-                "Name: " + getName() + ", " + "Pokedex: " + to_string getPokedex() + ", " + "Type: " + getType() + ", "
-                + "Secondary Type: " + getType2() + ", " + "Ability: " + getAbility() + ", " + "Generation" +
-                getGeneration();
-
-
+                "Name: " + getName() + ", " + "Pokedex: " + std::to_string(getPokedex()) + ", " + "Type: " + getType() + ", "
+                + "Secondary Type: " + getType2() + ", " + "Ability: " + getAbility() + ", " + "Generation" + std::to_string(getGeneration());
     }
 //Returns a list of type efficiencies. Each type is correlated with a number
 // return list must be deleted by calling function.
