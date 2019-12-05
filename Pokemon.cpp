@@ -4,6 +4,7 @@
 #include "Pokemon.h"
 #include "TypeEffectiveness.cpp"
 #include "ArrayList.h"
+#include <string>
 
 //Constructor
 Pokemon::Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::string type2In, std::string abilityIn, int generationIn) {
@@ -103,13 +104,15 @@ std::string Pokemon::getAbility(){
     /**
      * @return Current Pokemon with all listed attributes
      */
-std::string Pokemon::toString(){
-    std::string pokemon = "Name: " + Pokemon->getName + "/n";
-    pokemon += "Pokedex: " + Pokemon->Pokedex + "/n";
-    pokemon += "Pokedex: " + Pokemon->Pokedex + "/n";
+std::string Pokemon::toString() {
+        std::string pokedex = to_string(getPokedex())
+        std::string pokemon =
+                "Name: " + getName() + ", " + "Pokedex: " + to_string getPokedex() + ", " + "Type: " + getType() + ", "
+                + "Secondary Type: " + getType2() + ", " + "Ability: " + getAbility() + ", " + "Generation" +
+                getGeneration();
 
-}
 
+    }
 //Returns a list of type efficiencies. Each type is correlated with a number
 // return list must be deleted by calling function.
 // and the efficiencies are .25,.5,1,2 and 4 depending on the move.
