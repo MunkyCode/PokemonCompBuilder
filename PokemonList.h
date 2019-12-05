@@ -25,7 +25,7 @@ class PokemonList{
             Pokemon* *temp = array;
             array = new Pokemon*[currCapacity];
             for (int x = 0; x < currItemCount; x++) {
-                array[x] = temp*[x];
+                array[x] = temp[x];
             }
             delete[] temp;
         }
@@ -91,14 +91,19 @@ class PokemonList{
                 int iteration = 0;
                 while(!(sorted||iteration>=currItemCount)){
                     if(itemToAdd->getName() < array[iteration]->getName()){
-                        for(int x = currItemCount; x > iteration; x++){
+                        for(int x = currItemCount; x > iteration; x--){
                             array[x] = array[x-1];
                         }
                         array[iteration] = itemToAdd;
+                        sorted = true;
                     }
                     iteration++;
                 }
+                if(!sorted){
+                    array[currItemCount] = itemToAdd;
+                }
             }
+            currItemCount++;
         }
 
         /**
@@ -157,6 +162,15 @@ class PokemonList{
 
         int find(std::string name){
             return binFind(currItemCount, name, currItemCount/2);
+        }
+
+        int find(int pokedex){
+            for(int x = 0; x < currItemCount; x++){
+                if(array[x]->getPokedex() == pokedex){
+                    return x;
+                }
+            }
+            return -1;
         }
 
         int binFind(int size, std::string name, int loc){
