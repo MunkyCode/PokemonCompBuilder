@@ -79,7 +79,7 @@ class PokemonList{
             delete[] array;
         }
 
-        void insertPokemon(Pokemon* itemToAdd){
+        void addPokemon(Pokemon* itemToAdd){
             if(currItemCount >= currCapacity){
                 doubleCapacity();
             }
@@ -91,11 +91,12 @@ class PokemonList{
                 int iteration = 0;
                 while(!(sorted||iteration>=currItemCount)){
                     if(itemToAdd->getName() < array[iteration]->getName()){
-                        //TODO finish this shit. It gotta do the move things over and put before them alllll. Otherwise it adds to end.
+                        for(int x = currItemCount; x > iteration; x++){
+                            array[x] = array[x-1];
+                        }
+                        array[iteration] = itemToAdd;
                     }
-                }
-                {
-
+                    iteration++;
                 }
             }
         }
@@ -154,20 +155,46 @@ class PokemonList{
             return -1;
         }
 
+        int find(std::string name){
+            return binFind(currItemCount, name, currItemCount/2);
+        }
 
-
-        /**
-         * Searches an int array for a certain value
-         * @return the index of the last occurrence of numToFind if it is present, otherwise returns -1
-         */
-        int findLast(Pokemon* toFind){
-            for (int x = currItemCount; x > 0; x--) {
-                if (array[x - 1] == toFind) {
-                    return x - 1;
+        int binFind(int size, std::string name, int loc){
+            if(size == 1){
+                if(array[loc]->getName() == name){
+                    return loc;
+                }
+                else{
+                    return -1;
                 }
             }
-            return -1;
+            else if(size == 2){
+                if(array[loc]->getName() == name){
+                    return loc;
+                }
+                else{
+                    return binFind(size-1, name, loc-1);
+                }
+            }
+            else if(size > 2){
+                int size2 = size/2;
+                int size3 = (size-1)/2;
+                if(array[loc]->getName() == name){
+                    return loc;
+                }
+                else if (array[loc]->getName() > name){
+                    return binFind(size2, name, loc-((size2+1)/2));
+                }
+                else{
+                    return binFind(size3, name, loc+((size3+2)/2));
+                }
+            }
+            else{
+                return -1;
+            }
         }
+
+
 
         /**
          * removes the item at the end of the list, and returns a copy of that item
