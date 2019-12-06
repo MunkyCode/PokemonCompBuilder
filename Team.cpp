@@ -34,7 +34,9 @@
             pokemonArray[i] = TeamToCopy.pokemonArray[i];
         }
     }
-
+    std::string Team::getName(){
+    return name;
+}
 
     /**
      * Adds a pokemon to pokemon array

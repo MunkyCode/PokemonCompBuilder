@@ -25,7 +25,7 @@ void printToFilePokemon(std::string fileName, ArrayList<Pokemon*>* pokeList, int
     std::ofstream outf(fileName);
     if (outf) {
         for (int i = 0; i < size; i++) {
-            outf << pokeList->getValueAt(i)->toString() << std::endl;
+            outf << pokeList->getValueAt(i)->getName() << std::endl;
         }
         outf.close();
     }
@@ -35,12 +35,7 @@ void printToFileTeam(std::string fileName, ArrayList<Team*>* teamList, int size)
     std::ofstream outf(fileName);
     if (outf){
         for(int i = 0; i<size;i++) {
-            outf <<"testing line 1";
-            for(int x=0; x<teamList->getValueAt(i)->itemCount()-1;x++) {
-                outf << teamList->getValueAt(i)->getPokemon(x) + ", ";
-            }
-            outf <<
-        }
+            outf <<teamList->getValueAt(i)->getName() + ": " + teamList->getValueAt(i)->displayTeam()<<std::endl;
     }
     outf.close();
 }

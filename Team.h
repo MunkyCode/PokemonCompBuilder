@@ -28,6 +28,8 @@ public:
     //Assignment Operator
     Team& operator=(const Team& TeamToCopy);
 
+
+    std::string getName();
     /**
      * @param
      */

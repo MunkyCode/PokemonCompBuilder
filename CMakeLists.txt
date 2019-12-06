@@ -3,4 +3,4 @@ project(PokemonCompBuilder)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(PokemonCompBuilder Team.cpp main.cpp Pokemon.cpp SmartBuilder.h ArrayList.h TestLib.cpp PokemonList.h)
+add_executable(PokemonCompBuilder Team.cpp main.cpp Pokemon.cpp SmartBuilder.h ArrayList.h TestLib.cpp PokemonList.h FileLibrary.h FileLibrary.cpp)
