@@ -34,6 +34,7 @@ void testFileLibrary(){
     PokemonList* pokeList;
     pokeList = createPokemonList("Pokemon - TestData.txt");
     std::cout<<pokeList->itemCount()<<std::endl;
+    std::cout<<pokeList->getValueAt(0)->getName()<<std::endl;
     printAssertEquals(false, pokeList->isEmpty());
     printAssertEquals(6, pokeList->find("Aggron"));
 
@@ -164,7 +165,7 @@ int main() {
     //pokemonTest();
     //testArrayList();
     //testPokemonList();
-    printFromFile("Pokemon - TestData.txt");
+    //printFromFile("Pokemon - TestData.txt");
     testFileLibrary();
 
 
