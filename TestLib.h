@@ -4,16 +4,7 @@
 
 #ifndef COMP220LAB_TESTLIBRARY_H
 #define COMP220LAB_TESTLIBRARY_H
-
-template<typename T, typename D>
-void printAssertEquals(T expected, D actual){
-    if(expected == actual){
-        std::cout << "pass" << std::endl;
-    }
-    else {
-        std::cout << "FAIL, expected: " << expected << "\tactual: " << actual << std::endl;
-    }
-}
+void printAssertEquals(float expected, float actual);
 
 /**
  * reports whether ints are equal or not
@@ -41,6 +32,16 @@ void printAssertEquals(bool expected, bool actual);
  *      Else it prints "FAIL" and their respective values
  */
 void printAssertEquals(std::string expected, std::string actual);
+
+/*template<typename T, typename D>
+void printAssertEquals(T expected, D actual){
+    if(expected == actual){
+        std::cout << "pass" << std::endl;
+    }
+    else {
+        std::cout << "FAIL, expected: " << expected << "\tactual: " << actual << std::endl;
+    }
+}*/
 
 /**
  * reports whether arrays are equal or not

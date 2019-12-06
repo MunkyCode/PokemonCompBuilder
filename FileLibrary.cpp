@@ -93,7 +93,7 @@ PokemonList* createPokemonList(std::string fileName){
                 getline(s_stream, substr, ','); //get first string delimited by comma
                 if(count==0){
                     name = substr;
-                    std::cout<<substr<<std::endl;
+                    //std::cout<<substr<<std::endl;
                 }
                 if(count==1){
                     dex = std::stoi(substr);

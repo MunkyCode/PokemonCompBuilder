@@ -3,6 +3,15 @@
 //
 #include <iostream>
 #include "TestLib.h"
+void printAssertEquals(float expected, float actual){
+    if (expected == actual){
+        std::cout << "pass" << std::endl;
+    }
+    else {
+        std::cout << "FAIL, expected: " << expected << "\tactual: " << actual << std::endl;
+    }
+}
+
 
 void printAssertEquals(int expected, int actual){
     if (expected == actual){

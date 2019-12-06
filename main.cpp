@@ -79,20 +79,43 @@ void pokemonTest(){
 
 void testArrayList(){
     std::cout<< "--------ArrayList test---------"<<std::endl;
-    std::cout<<"Basic Tests:"<<std::endl;
+    std::cout<<"Testing different Type, adding, and empty:"<<std::endl;
     ArrayList<int>* intList = new ArrayList<int>(4);
     ArrayList<float>* floatList = new ArrayList<float>(4);
+    printAssertEquals(true, intList->isEmpty());
+    printAssertEquals(true, floatList->isEmpty());
     floatList->insertAtEnd(10);
     intList->insertAtEnd(10);
-    printAssertEquals(0,intList->getValueAt(0));
-    printAssertEquals(0,floatList->getValueAt(0));
+    printAssertEquals(false, intList->isEmpty());
+    printAssertEquals(false, floatList->isEmpty());
+    printAssertEquals(10,intList->getValueAt(0));
+    printAssertEquals(10.0,floatList->getValueAt(0));
+    std::cout<<"Testing more size:"<<std::endl;
+    for(int x = 0; x < 15; x ++){
+        intList->insertAtEnd(x);
+        floatList->insertAtEnd(x);
+    }
+    printAssertEquals(16, intList->itemCount());
+    printAssertEquals(16, floatList->itemCount());
+    std::cout<<"Testing Remove function:\n";
+    printAssertEquals(14, intList->removeValueAtEnd());
+    printAssertEquals(14.0, floatList->removeValueAtEnd());
+    printAssertEquals(5, intList->removeValueAt(6));
+    printAssertEquals(5.0, floatList->removeValueAt(6));
+
+
     delete intList, floatList;
+    std::cout << "Testing with Pokemon pointer type: "<<std::endl;
     Pokemon* p1 = new Pokemon("Bulbasaur", 1, "grass","poison","['Overgrow', 'Chlorophyll']", 1);
     Pokemon* p2 = new Pokemon("Squirtle", 7, "water", "", "['Torrent', 'Rain Dish']", 1);
     Pokemon* p3 = new Pokemon("Charmander", 4, "fire","","['Blaze', 'Solar Power']", 1);
     ArrayList<Pokemon*>* pokeList = new ArrayList<Pokemon*>(4);
     pokeList->insertAtEnd(p1);
-    std::cout<<pokeList->getValueAt(0)->getName()<<std::endl;
+    pokeList->insertAtEnd(p2);
+    pokeList->insertAtEnd(p3);
+    printAssertEquals(p1, pokeList->getValueAt(0));
+    printAssertEquals(p2->getName(), pokeList->getValueAt(1)->getName());
+
     delete pokeList, p1,p2,p3;
 }
 
@@ -166,10 +189,6 @@ int main() {
     //printToFile("testFile.txt");
     //printFromFile("testFile.txt");
     //testPokemonFromFile("PokemonData.csv");
-    Pokemon* p1 = new Pokemon("Bulbasaur", 1, "grass","poison","['Overgrow', 'Chlorophyll']", 1);
-    Pokemon* p2 = new Pokemon("Bulbasaur", 1, "grass","poison","['Overgrow', 'Chlorophyll']", 1);
-    bool equal = *p1 == *p2;
-    std::cout << equal <<std::endl;
     pokemonTest();
     testArrayList();
     testPokemonList();
