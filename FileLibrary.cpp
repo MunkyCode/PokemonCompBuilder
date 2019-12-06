@@ -5,23 +5,23 @@
 #include <fstream>
 #include<vector>
 #include<sstream>
-#include <w32api/wsman.h>
+//#include <w32api/wsman.h>
 #include "Pokemon.h"
 #include"Team.h"
 #include "ArrayList.h"
 #include "PokemonList.h"
 
 
-void printToFile(std::string fileName){
+/*void printToFile(std::string fileName){
     std::ofstream outf(fileName);
     if (outf){
         outf <<"testing line 1"<< std::endl;
         outf <<"testing line 2"<< std::endl;
     }
     outf.close();
-}
+}*/
 
-void printToFilePokemon(std::string fileName, ArrayList<Pokemon*>* pokeList, int size) {
+void printToFilePokemon(std::string fileName, PokemonList* pokeList, int size) {
     std::ofstream outf(fileName);
     if (outf) {
         for (int i = 0; i < size; i++) {
@@ -70,8 +70,8 @@ ArrayList<Team*>* createTeamList(std::string fileName){
 }
 
 
-ArrayList<Pokemon*>* CreatePokemonList(std::string fileName){
-    ArrayList<Pokemon*>* pokemonDatabase = new ArrayList<Pokemon*>(801);
+PokemonList* CreatePokemonList(std::string fileName){
+    PokemonList* pokemonDatabase = new PokemonList(801);
     std::ifstream infile(fileName);
     std::string name;
     int dex;
@@ -111,7 +111,7 @@ ArrayList<Pokemon*>* CreatePokemonList(std::string fileName){
             }
             Pokemon* generic = new Pokemon(name,dex,type1,type2,abilities,gen);
             getline(infile, line);
-            pokemonDatabase->insertAtEnd(generic);
+            pokemonDatabase->addPokemon(generic);
         }
     } return pokemonDatabase;
 }
