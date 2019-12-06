@@ -73,6 +73,7 @@ ArrayList<Team*>* createTeamList(std::string fileName){
 PokemonList* createPokemonList(std::string fileName){
     PokemonList* pokemonDatabase = new PokemonList(801);
     std::ifstream infile(fileName);
+    std::cout<<"working\n";
     std::string name;
     int dex;
     std::string type1;
@@ -80,6 +81,7 @@ PokemonList* createPokemonList(std::string fileName){
     std::string abilities;
     int gen;
     if (infile) {
+        std::cout<<"working\n";
         std::vector<std::string> result;
         int count = 0;
         while (infile) {

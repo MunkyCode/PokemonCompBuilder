@@ -5,6 +5,7 @@
 #include "ArrayList.h"
 #include "TestLib.h"
 #include "PokemonList.h"
+#include "FileLibrary.h"
 //COMMENT to boost my commit and contributions
 
 void printToFile(std::string fileName){
@@ -26,6 +27,18 @@ std::ifstream infile(fileName);
     } else {
     }
 }
+
+void testFileLibrary(){
+    std::cout<<"-------Testing FileLibrary------------"<<std::endl;
+
+    PokemonList* pokeList;
+    pokeList = createPokemonList("Pokemon - TestData.csv");
+    std::cout<<pokeList->itemCount()<<std::endl;
+    printAssertEquals(false, pokeList->isEmpty());
+    printAssertEquals(6, pokeList->find("Aggron"));
+
+}
+
 void pokemonTest(){
     std::string types[18] = {"normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
     Pokemon* p1 = new Pokemon("Bulbasaur", 1, "grass","poison","['Overgrow', 'Chlorophyll']", 1);
@@ -148,9 +161,10 @@ int main() {
     //printToFile("testFile.txt");
     //printFromFile("testFile.txt");
     //testPokemonFromFile("PokemonData.csv");
-    pokemonTest();
+    //pokemonTest();
     //testArrayList();
-    testPokemonList();
+    //testPokemonList();
+    testFileLibrary();
 
 
 
