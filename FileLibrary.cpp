@@ -115,5 +115,5 @@ PokemonList* createPokemonList(std::string fileName){
             getline(infile, line);
             pokemonDatabase->addPokemon(generic);
         }
-    } return pokemonDatabase;
+    }return pokemonDatabase;
 }
