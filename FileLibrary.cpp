@@ -70,7 +70,7 @@ ArrayList<Team*>* createTeamList(std::string fileName){
 }
 
 
-PokemonList* CreatePokemonList(std::string fileName){
+PokemonList* createPokemonList(std::string fileName){
     PokemonList* pokemonDatabase = new PokemonList(801);
     std::ifstream infile(fileName);
     std::string name;
