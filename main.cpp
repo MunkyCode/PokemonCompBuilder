@@ -41,7 +41,9 @@ void testFileLibrary(){
 }
 
 void pokemonTest(){
-    std::string types[18] = {"normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
+    std::string types[19] = {"null","normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
+    float waterArray[18] = { 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 0.5, 0.5, 2, 2, 1, 0.5, 1, 1, 1};
+    float fireArray[18] = { 1, 1, 1, 1, 2, 2, 0.5, 1, 0.5, 0.5, 2, 0.5, 1, 1, 0.5, 1, 1, 0.5};
     Pokemon* p1 = new Pokemon("Bulbasaur", 1, "grass","poison","['Overgrow', 'Chlorophyll']", 1);
     Pokemon* p2 = new Pokemon("Squirtle", 7, "water", "", "['Torrent', 'Rain Dish']", 1);
     Pokemon* p3 = new Pokemon("Charmander", 4, "fire","testing bad type","['Blaze', 'Solar Power']", 1);
@@ -64,12 +66,12 @@ void pokemonTest(){
     std::cout<<"\nSquirtle:\n";
     float* p2Effectivness = p2->getEffectiveTypes();
     for(int x = 0; x < 18; x++){
-        std::cout<<types[x]<<": "<<p2Effectivness[x]<<", ";
+        printAssertEquals(waterArray[x],p2Effectivness[x]);
     }
     std::cout<<"\nChamrander:\n";
     float* p3Effectivness = p3->getEffectiveTypes();
     for(int x = 0; x < 18; x++){
-        std::cout<<types[x]<<": "<<p3Effectivness[x]<<", ";
+        printAssertEquals(fireArray[x], p3Effectivness);
     }
     std::cout<<std::endl;
 
@@ -164,6 +166,10 @@ int main() {
     //printToFile("testFile.txt");
     //printFromFile("testFile.txt");
     //testPokemonFromFile("PokemonData.csv");
+    Pokemon* p1 = new Pokemon("Bulbasaur", 1, "grass","poison","['Overgrow', 'Chlorophyll']", 1);
+    Pokemon* p2 = new Pokemon("Bulbasaur", 1, "grass","poison","['Overgrow', 'Chlorophyll']", 1);
+    bool equal = *p1 == *p2;
+    std::cout << equal <<std::endl;
     pokemonTest();
     testArrayList();
     testPokemonList();

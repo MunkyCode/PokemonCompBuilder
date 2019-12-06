@@ -5,6 +5,16 @@
 #ifndef COMP220LAB_TESTLIBRARY_H
 #define COMP220LAB_TESTLIBRARY_H
 
+template<typename T>
+void printAssertEquals(T expected, T actual){
+    if(expected == actual){
+        std::cout << "pass" << std::endl;
+    }
+    else {
+        std::cout << "FAIL, expected: " << expected << "\tactual: " << actual << std::endl;
+    }
+}
+
 /**
  * reports whether ints are equal or not
  * @param expected - the value you expect the actual value to be

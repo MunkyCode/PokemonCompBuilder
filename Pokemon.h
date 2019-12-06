@@ -34,6 +34,8 @@ public:
     ~Pokemon();
     Pokemon(const Pokemon& toCopy);
     Pokemon& operator=(const Pokemon& toCopy);
+    bool operator==(const Pokemon &rhs);
+
 
     //Getters
     std::string getName();

@@ -2,7 +2,7 @@
 // Created by sjwel on 11/18/2019.
 //
 #include "Pokemon.h"
-#include "TypeEffectiveness.cpp"
+#include "TypeEffectiveness.h"
 #include "ArrayList.h"
 #include <string>
 
@@ -45,6 +45,11 @@ Pokemon& Pokemon::operator=(const Pokemon &toCopy) {
         typeEffectivness[x] = toCopy.typeEffectivness[x];
     }
     return *this;
+}
+
+bool Pokemon::operator==(const Pokemon &rhs){
+    return name == rhs.name && pokedex == rhs.pokedex && ability == rhs.ability && type == rhs.type &&
+           type2 == rhs.type2 && generation == rhs.generation;
 }
 
 //Copy Constructor
