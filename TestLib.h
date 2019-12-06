@@ -5,8 +5,8 @@
 #ifndef COMP220LAB_TESTLIBRARY_H
 #define COMP220LAB_TESTLIBRARY_H
 
-template<typename T>
-void printAssertEquals(T expected, T actual){
+template<typename T, typename D>
+void printAssertEquals(T expected, D actual){
     if(expected == actual){
         std::cout << "pass" << std::endl;
     }
