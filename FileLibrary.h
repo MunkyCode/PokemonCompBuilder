@@ -1,11 +1,11 @@
 //
 // Created by Jolie Elins on 11/20/19.
 //
-#include <iostream>;
-#include <fstream>;
-#include "Pokemon.h";
+#include <iostream>
+#include <fstream>
+#include "Pokemon.h"
 #include"Team.h"
-#include "ArrayList.h";
+#include "ArrayList.h"
 
 #ifndef POKEMONCOMPBUILDER_FILELIBRARY_H
 #define POKEMONCOMPBUILDER_FILELIBRARY_H
