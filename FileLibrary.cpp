@@ -33,16 +33,45 @@ void printToFilePokemon(std::string fileName, ArrayList<Pokemon*>* pokeList, int
 
 void printToFileTeam(std::string fileName, ArrayList<Team*>* teamList, int size) {
     std::ofstream outf(fileName);
-    if (outf){
-        for(int i = 0; i<size;i++) {
-            outf <<teamList->getValueAt(i)->getName() + ": " + teamList->getValueAt(i)->displayTeam()<<std::endl;
+    if (outf) {
+        for (int i = 0; i < size; i++) {
+            outf << teamList->getValueAt(i)->getName() + ", " + teamList->getValueAt(i)->displayTeam() << std::endl;
+        }
+        outf.close();
     }
-    outf.close();
 }
 
+ArrayList<Team*>* createTeamList(std::string fileName){
+    ArrayList<Team*>* TeamList = new ArrayList<Team*>(10);
+    std::ifstream infile(fileName);
+    std::string name;
+    int dex;
+    int gen;
+    if (infile) {
+        std::vector<std::string> result;
+        while (infile) {
+            std::string line;
+            std::stringstream s_stream(line); //create string stream from the string
+            int count = 0;
+            while (s_stream.good()) {
+                std::string substr;
+                getline(s_stream, substr, ','); //get first string delimited by comma
+                Team* generic = new Team(name);
+                if(count==0){
+                    generic->changeName(substr);
+                }
+                else{
+                    //generic->addPokemon();
+            }
+                TeamList->insertAtEnd(generic);
+        }
+    } return TeamList;
 }
+}
+
+
 ArrayList<Pokemon*>* CreatePokemonList(std::string fileName){
-    ArrayList<Pokemon*>* pokemonDatabase = new ArrayList<Pokemon*>*(801);
+    ArrayList<Pokemon*>* pokemonDatabase = new ArrayList<Pokemon*>(801);
     std::ifstream infile(fileName);
     std::string name;
     int dex;
@@ -84,6 +113,5 @@ ArrayList<Pokemon*>* CreatePokemonList(std::string fileName){
             getline(infile, line);
             pokemonDatabase->insertAtEnd(generic);
         }
-    } else {
-    }
+    } return pokemonDatabase;
 }

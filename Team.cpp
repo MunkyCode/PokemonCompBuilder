@@ -38,6 +38,9 @@
     return name;
 }
 
+void Team::changeName(std::string nameIn) {
+    name = nameIn;
+}
     /**
      * Adds a pokemon to pokemon array
     * @param pokemonToAdd

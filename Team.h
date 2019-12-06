@@ -30,6 +30,8 @@ public:
 
 
     std::string getName();
+
+    void changeName(std::string nameIn);
     /**
      * @param
      */
