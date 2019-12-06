@@ -81,9 +81,9 @@ void testArrayList(){
     ArrayList<int>* intList = new ArrayList<int>(4);
     ArrayList<float>* floatList = new ArrayList<float>(4);
     floatList->insertAtEnd(10);
-    std::cout<<floatList->itemCount()<<std::endl;
-    std::cout<<floatList->removeValueAtEnd()<<std::endl;
-    std::cout<<floatList->itemCount()<<std::endl;
+    intList->insertAtEnd(10);
+    printAssertEquals(0,intList->getValueAt(0));
+    printAssertEquals(0,floatList->getValueAt(0));
     delete intList, floatList;
     Pokemon* p1 = new Pokemon("Bulbasaur", 1, "grass","poison","['Overgrow', 'Chlorophyll']", 1);
     Pokemon* p2 = new Pokemon("Squirtle", 7, "water", "", "['Torrent', 'Rain Dish']", 1);
@@ -91,6 +91,7 @@ void testArrayList(){
     ArrayList<Pokemon*>* pokeList = new ArrayList<Pokemon*>(4);
     pokeList->insertAtEnd(p1);
     std::cout<<pokeList->getValueAt(0)->getName()<<std::endl;
+    delete pokeList, p1,p2,p3;
 }
 
 void testPokemonList(){
@@ -154,6 +155,7 @@ void testPokemonList(){
     printAssertEquals(17, pokeList->find(19));
     printAssertEquals(0, pokeList->find(1));
     printAssertEquals(-1,pokeList->find(20));
+    delete p1,p2,p3,pokeList,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,t17,t18;
 }
 
 
@@ -162,11 +164,11 @@ int main() {
     //printToFile("testFile.txt");
     //printFromFile("testFile.txt");
     //testPokemonFromFile("PokemonData.csv");
-    //pokemonTest();
-    //testArrayList();
-    //testPokemonList();
+    pokemonTest();
+    testArrayList();
+    testPokemonList();
     //printFromFile("Pokemon - TestData.txt");
-    testFileLibrary();
+    //testFileLibrary();
 
 
 

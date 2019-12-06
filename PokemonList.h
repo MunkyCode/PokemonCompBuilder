@@ -146,7 +146,7 @@ class PokemonList{
                 array = new Pokemon*[50];
             }
         }
-
+        //TODO add display functions. Display all display by attribute.
         /**
          * Searches an int array for a certain value
          * @return the index of the first occurrence of numToFind if it is present, otherwise returns -1
