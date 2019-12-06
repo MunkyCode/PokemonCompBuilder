@@ -16,7 +16,7 @@
  * @param size
  * @throws IDK my exeptions but wrong type if not a pokemon list
  */
-void printToFilePokemon(std::string fileName, ArrayList<Pokemon*>* pokeList, int size);
+void printToFilePokemon(std::string fileName, PokemonList* pokeList, int size);
 /**
  *
  * @param fileName
@@ -39,7 +39,7 @@ ArrayList<Team*>* readFromFileTeam(std::string fileName);
 
 
 //Creates the ar
-ArrayList<Pokemon*>* createPokemonList(std::string fileName);
+PokemonList* createPokemonList(std::string fileName);
 
 
 #endif //POKEMONCOMPBUILDER_FILELIBRARY_H
