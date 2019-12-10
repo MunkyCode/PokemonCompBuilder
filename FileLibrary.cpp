@@ -46,26 +46,28 @@ ArrayList<Team*>* createTeamList(std::string fileName){
     ArrayList<Team*>* TeamList = new ArrayList<Team*>(10);
     std::ifstream infile(fileName);
     std::string name;
-    int dex;
-    int gen;
     if (infile) {
         std::vector<std::string> result;
         while (infile) {
             std::string line;
-            std::stringstream s_stream(line); //create string stream from the string
+            getline(infile,line);
+            std::stringstream splitter(line); //create string stream from the string
             int count = 0;
-            while (s_stream.good()) {
-                std::string substr;
-                getline(s_stream, substr, ','); //get first string delimited by comma
-                Team* generic = new Team(name);
-                if(count==0){
-                    generic->changeName(substr);
+            std::string substr;
+            if(splitter) {
+                getline(splitter, substr, ',');
+                while (splitter) {
+                    getline(splitter, substr, ',');
+                    Team *generic = new Team(name);
+                    if (count == 0) {
+                        generic->changeName(substr);
+                    } else {
+                        //Pokemon generic =
+                        //generic->addPokemon();
+                    }
+                    TeamList->insertAtEnd(generic);
                 }
-                else{
-                    //generic->addPokemon();
             }
-                TeamList->insertAtEnd(generic);
-        }
     } return TeamList;
 }
 }
