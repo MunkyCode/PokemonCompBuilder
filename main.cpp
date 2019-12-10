@@ -183,6 +183,19 @@ void testPokemonList(){
     delete p1,p2,p3,pokeList,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,t17,t18;
 }
 
+void testTeam(){
+    std::cout <<"-------------Team Tests------------"<<std::endl;
+    PokemonList* pokeList = createPokemonList("Pokemon - TestData.txt");
+    Pokemon* p1 = new Pokemon("Bulbasaur", 1, "grass","poison","['Overgrow', 'Chlorophyll']", 1);
+    Pokemon* p2 = new Pokemon("Squirtle", 7, "water", "", "['Torrent', 'Rain Dish']", 1);
+    Pokemon* p3 = new Pokemon("Charmander", 4, "fire","","['Blaze', 'Solar Power']", 1);
+    Team* team1 = new Team("Test Team One");
+    printAssertEquals("Test Team One", team1->getName());
+    team1->changeName("new name");
+    printAssertEquals("new name",team1->getName());
+    team1->addPokemon(pokeList->getValueAt(pokeList->find("Aggron")));
+    std::cout<<team1->displayTeam()<<std::endl;
+}
 
 int main() {
     //std::cout << "Hello, World!" << std::endl;
@@ -194,6 +207,7 @@ int main() {
     testPokemonList();
     //printFromFile("Pokemon - TestData.txt");
     //testFileLibrary();
+    testTeam();
 
 
 
