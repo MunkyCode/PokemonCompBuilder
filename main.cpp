@@ -37,6 +37,7 @@ void testFileLibrary(){
     for(int x = 0; x < pokeList->itemCount(); x++){
         std::cout<<pokeList->getValueAt(x)->toString()<<std::endl;
     }
+    printToFilePokemon("hello.txt",pokeList, 10);
 
 
 }
