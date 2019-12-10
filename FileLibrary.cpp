@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include<vector>
 #include<sstream>
 //#include <w32api/wsman.h>
@@ -86,35 +87,38 @@ PokemonList* createPokemonList(std::string fileName){
         int count = 0;
         while (infile) {
             std::string line;
-            std::stringstream s_stream(line); //create string stream from the string
+            std::stringstream splitter(line); //create string stream from the string
             int count = 0;
-            while (s_stream.good()) {
-                std::string substr;
-                getline(s_stream, substr, ','); //get first string delimited by comma
-                if(count==0){
-                    name = substr;
-                    //std::cout<<substr<<std::endl;
+            std::string substr;
+            if(splitter) {
+                getline(splitter, substr, ',');
+                while (splitter) {
+                    getline(splitter, substr, ','); //get first string delimited by comma
+                    if (count == 0) {
+                        name = substr;
+                        //std::cout<<substr<<std::endl;
+                    }
+                    if (count == 1) {
+                        dex = std::stoi(substr);
+                    }
+                    if (count == 2) {
+                        type1 = substr;
+                    }
+                    if (count == 3) {
+                        type2 = substr;
+                    }
+                    if (count == 4) {
+                        abilities = substr;
+                    }
+                    if (count == 5) {
+                        gen = stoi(substr);
+                    }
+                    count += 1;
                 }
-                if(count==1){
-                    dex = std::stoi(substr);
-                }
-                if(count==2){
-                    type1 = substr;
-                }
-                if(count==3){
-                    type2 = substr;
-                }
-                if(count==4){
-                    abilities = substr;
-                }
-                if(count==5){
-                    gen = stoi(substr);
-                }
-                count +=1;
+                Pokemon *generic = new Pokemon(name, dex, type1, type2, abilities, gen);
+                getline(infile, line);
+                pokemonDatabase->addPokemon(generic);
             }
-            Pokemon* generic = new Pokemon(name,dex,type1,type2,abilities,gen);
-            getline(infile, line);
-            pokemonDatabase->addPokemon(generic);
         }
     }
     else{std::cout<<"Nope\n";}
