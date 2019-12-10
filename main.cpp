@@ -30,13 +30,14 @@ std::ifstream infile(fileName);
 
 void testFileLibrary(){
     std::cout<<"-------Testing FileLibrary------------"<<std::endl;
-
     PokemonList* pokeList;
     pokeList = createPokemonList("Pokemon - TestData.txt");
-    std::cout<<pokeList->itemCount()<<std::endl;
-    std::cout<<pokeList->getValueAt(0)->getName()<<std::endl;
     printAssertEquals(false, pokeList->isEmpty());
     printAssertEquals(6, pokeList->find("Aggron"));
+    for(int x = 0; x < pokeList->itemCount(); x++){
+        std::cout<<pokeList->getValueAt(x)->toString()<<std::endl;
+    }
+
 
 }
 
@@ -202,12 +203,12 @@ int main() {
     //printToFile("testFile.txt");
     //printFromFile("testFile.txt");
     //testPokemonFromFile("PokemonData.csv");
-    pokemonTest();
-    testArrayList();
-    testPokemonList();
+    //pokemonTest();
+    //testArrayList();
+    //testPokemonList();
     //printFromFile("Pokemon - TestData.txt");
-    //testFileLibrary();
-    testTeam();
+    testFileLibrary();
+    //testTeam();
 
 
 

@@ -83,23 +83,24 @@ PokemonList* createPokemonList(std::string fileName){
     int gen;
     if (infile) {
         //std::cout<<"working\n";
-        std::vector<std::string> result;
         int count = 0;
         while (infile) {
             std::string line;
+            getline(infile, line);
             std::stringstream splitter(line); //create string stream from the string
             int count = 0;
             std::string substr;
             if(splitter) {
+                //std::cout<<count<<" hello\n";
                 getline(splitter, substr, ',');
-                while (splitter) {
-                    getline(splitter, substr, ','); //get first string delimited by comma
+                while (splitter) { //get first string delimited by comma
+                    //std::cout<<count<<" hello\n";
                     if (count == 0) {
-                        name = substr;
-                        //std::cout<<substr<<std::endl;
+                        dex = std::stoi(substr);
+                        //std::cout<<substr<<"hello"<<std::endl;
                     }
                     if (count == 1) {
-                        dex = std::stoi(substr);
+                        name = substr;
                     }
                     if (count == 2) {
                         type1 = substr;
@@ -112,12 +113,13 @@ PokemonList* createPokemonList(std::string fileName){
                     }
                     if (count == 5) {
                         gen = stoi(substr);
+                        Pokemon *generic = new Pokemon(name, dex, type1, type2, abilities, gen);
+                        pokemonDatabase->addPokemon(generic);
                     }
+                    getline(splitter, substr, ',');
                     count += 1;
                 }
-                Pokemon *generic = new Pokemon(name, dex, type1, type2, abilities, gen);
-                getline(infile, line);
-                pokemonDatabase->addPokemon(generic);
+
             }
         }
     }
