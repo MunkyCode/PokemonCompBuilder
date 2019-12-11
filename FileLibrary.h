@@ -6,7 +6,6 @@
 #include "Pokemon.h"
 #include"Team.h"
 #include "ArrayList.h"
-#include "main.cpp"
 
 #ifndef POKEMONCOMPBUILDER_FILELIBRARY_H
 #define POKEMONCOMPBUILDER_FILELIBRARY_H
