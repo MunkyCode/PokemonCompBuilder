@@ -38,6 +38,18 @@ void testFileLibrary(){
         std::cout<<pokeList->getValueAt(x)->toString()<<std::endl;
     }
     printToFilePokemon("hello.txt",pokeList, 10);
+    Team* team1 = new Team("Test Team One");
+    team1->addPokemon(pokeList->getValueAt(1));
+    team1->addPokemon(pokeList->getValueAt(2));
+    team1->addPokemon(pokeList->getValueAt(3));
+    Team* team2 = new Team("Test Team Two");
+    team2->addPokemon(pokeList->getValueAt(3));
+    team2->addPokemon(pokeList->getValueAt(4));
+    team2->addPokemon(pokeList->getValueAt(4));
+    ArrayList<Team*>* teamList = new ArrayList<Team*>(2);
+    teamList->insertAtEnd(team1);
+    teamList->insertAtEnd(team2);
+    printToFileTeam("hello2.txt",teamList,2);
 
 
 }

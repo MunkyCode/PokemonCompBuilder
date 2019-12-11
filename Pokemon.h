@@ -49,6 +49,7 @@ public:
 
     //To string
     std::string toString();
+    std::string toFileString();
 
     //Returns a list of type efficiencies. Each type is correlated with a number
     // and the efficiencies are .25,.5,1,2 and 4 depending on the move.

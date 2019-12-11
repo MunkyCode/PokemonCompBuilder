@@ -26,7 +26,7 @@ void printToFilePokemon(std::string fileName, PokemonList* pokeList, int size) {
     std::ofstream outf(fileName);
     if (outf) {
         for (int i = 0; i < size; i++) {
-            outf << pokeList->getValueAt(i)->getName() << std::endl;
+            outf << pokeList->getValueAt(i)->toFileString() << std::endl;
         }
         outf.close();
     }

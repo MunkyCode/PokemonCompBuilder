@@ -113,8 +113,13 @@ std::string Pokemon::toString() {
         std::string pokedexStr = std::to_string(pokedex);
         std::string pokemon = "Name: " + name + ", " + "Pokedex: " + pokedexStr + ", " + "Type: " + type + ", "+ "Secondary Type: " + type2 + ", " + "Ability: " + ability + ", " + "Generation: " + std::to_string(generation) ;
         return pokemon;
-
     }
+
+    std::string Pokemon::toFileString(){
+        std::string pokedexStr = std::to_string(pokedex);
+        std::string pokemon = name + ", " + pokedexStr + ", " + type + ", "+ type2 + ", " + ability + ", " + std::to_string(generation);
+        return pokemon;
+}
 //Returns a list of type efficiencies. Each type is correlated with a number
 // return list must be deleted by calling function.
 // and the efficiencies are .25,.5,1,2 and 4 depending on the move.
