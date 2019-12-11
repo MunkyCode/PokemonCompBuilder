@@ -1,10 +1,10 @@
-Abomasnow
-Abra
-Absol
-Accelgor
-Aegislash
-Aerodactyl
-Aggron
-Aipom
-Alakazam
-Alomomola
+Abomasnow, 460, grass, ice, ['Snow Warning'. 'Soundproof'], 4
+Abra, 63, psychic, null, ['Synchronize'. 'Inner Focus'. 'Magic Guard'], 1
+Absol, 359, dark, null, ['Pressure'. 'Super Luck'. 'Justified'], 3
+Accelgor, 617, bug, null, ['Hydration'. 'Sticky Hold'. 'Unburden'], 5
+Aegislash, 681, steel, ghost, ['Stance Change'], 6
+Aerodactyl, 142, rock, flying, ['Rock Head'. 'Pressure'. 'Unnerve'], 1
+Aggron, 306, steel, rock, ['Sturdy'. 'Rock Head'. 'Heavy Metal'], 3
+Aipom, 190, normal, null, ['Run Away'. 'Pickup'. 'Skill Link'], 2
+Alakazam, 65, psychic, null, ['Synchronize'. 'Inner Focus'. 'Magic Guard'], 1
+Alomomola, 594, water, null, ['Healer'. 'Hydration'. 'Regenerator'], 5
