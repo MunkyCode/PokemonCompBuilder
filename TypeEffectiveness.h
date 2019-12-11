@@ -1,7 +1,7 @@
 //
 // Created by sjwel on 12/6/2019.
 //
-
+#include "ArrayList.h"
 #ifndef POKEMONCOMPBUILDER_TYPEEFFECTIVNESS_H
 #define POKEMONCOMPBUILDER_TYPEEFFECTIVNESS_H
 std::string types[19] = {"null","normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
@@ -27,4 +27,8 @@ float fairyArray[18] = { 1, 0.5, 1, 2, 1, 1, 0.5, 1, 2, 1, 1, 1, 1, 1, 1, 0, 0.5
 float* arrays[19] = {nullArray, normalArray, fightingArray, flyingArray, poisonArray, groundArray, rockArray, bugArray, ghostArray, steelArray,
                      fireArray, waterArray, grassArray, electricArray, psychicArray, iceArray, dragonArray, darkArray, fairyArray};
 
+float* returnTypeArray(std::string Type){
+    int index = types->find(Type);
+    return arrays[index];
+}
 #endif //POKEMONCOMPBUILDER_TYPEEFFECTIVNESS_H
