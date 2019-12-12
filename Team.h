@@ -28,6 +28,7 @@ public:
     //Assignment Operator
     Team& operator=(const Team& TeamToCopy);
 
+    int getCount();
 
     std::string getName();
 

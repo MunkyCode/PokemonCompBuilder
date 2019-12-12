@@ -118,5 +118,9 @@ std::string Team::displayTeamFile(){
         return effectiveArray;
     }
 
+    int Team::getCount(){
+        return pokemonArray->itemCount();
+    }
+
 
 
