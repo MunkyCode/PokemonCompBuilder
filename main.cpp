@@ -255,6 +255,7 @@ void testTeam(){
     }
 
 int main() {
+    srand(time(NULL));
     //std::cout << "Hello, World!" << std::endl;
     //printToFile("testFile.txt");
     //printFromFile("testFile.txt");
@@ -263,8 +264,17 @@ int main() {
     //testArrayList();
     //testPokemonList();
     //printFromFile("Pokemon - TestData.txt");
-    testFileLibrary();
+    //testFileLibrary();
     //testTeam();
+
+
+
+    Team* test = new Team("Test");
+    PokemonList* pokeList = createPokemonList("Pokemon - Data.csv");
+    test->addPokemon(pokeList->getValueAt(pokeList->find("Charmander")));
+    std::cout<<test->displayTeam()<<std::endl;
+
+
 
 
 
