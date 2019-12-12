@@ -96,7 +96,7 @@ void Team::changeName(std::string nameIn) {
 
 
     float* Team::getEffectiveTypes() {
-        float* effectiveArray = new float(18);
+        float* effectiveArray = new float[18];
         for (int x = 0; x < 18; x++) {
             effectiveArray[x] = 1;
         }
