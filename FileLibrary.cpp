@@ -42,7 +42,7 @@ void printToFileTeam(std::string fileName, ArrayList<Team*>* teamList, int size)
     }
 }
 
-ArrayList<Team*>* createTeamList(std::string fileName){
+ArrayList<Team*>* createTeamList(std::string fileName, PokemonList* PokeList){
     ArrayList<Team*>* TeamList = new ArrayList<Team*>(10);
     std::ifstream infile(fileName);
     std::string name;
@@ -62,10 +62,10 @@ ArrayList<Team*>* createTeamList(std::string fileName){
                     if (count == 0) {
                         generic->changeName(substr);
                     } else {
-                        //Pokemon generic =
-                        //generic->addPokemon();
+                        generic->addPokemon(PokeList->getValueAt(PokeList->find(substr)));
                     }
                     TeamList->insertAtEnd(generic);
+                    count+=1;
                 }
             }
     } return TeamList;

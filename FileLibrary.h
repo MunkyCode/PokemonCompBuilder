@@ -35,7 +35,7 @@ ArrayList<Pokemon*>* readFromFilePokemon(std::string fileName);
  * @param fileName
  * @return
  */
-ArrayList<Team*>* readFromFileTeam(std::string fileName);
+ArrayList<Team*>* readFromFileTeam(std::string fileName,  PokemonList* PokeList);
 
 
 //Creates the ar
