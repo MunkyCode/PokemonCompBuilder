@@ -1,2 +1,2 @@
-Test Team One, Abra, Absol, Accelgor
-Test Team Two, Accelgor, Aegislash, Aegislash
+Test Team One,Abra,Absol,Accelgor
+Test Team Two,Accelgor,Aegislash,Aegislash

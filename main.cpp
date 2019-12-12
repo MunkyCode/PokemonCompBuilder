@@ -55,12 +55,10 @@ void testFileLibrary(){
     printToFileTeam("hello2.txt",teamList,2);
 
     ArrayList<Team*>* teamList2 = createTeamList("hello2.txt",pokeList);
-    std::cout<<"hello from main"<<std::endl;
-
+    printAssertEquals(true,teamList->getValueAt(0)->getPokemon(0)==teamList2->getValueAt(0)->getPokemon(0));
+    printAssertEquals(true,teamList->getValueAt(1)->getPokemon(0)==teamList2->getValueAt(1)->getPokemon(0));
+    printAssertEquals(true,teamList->getValueAt(0)->getPokemon(1)==teamList2->getValueAt(0)->getPokemon(1));
     printAssertEquals(true,teamList->getValueAt(1)->getPokemon(1)==teamList2->getValueAt(1)->getPokemon(1));
-    printAssertEquals(true,teamList->getValueAt(2)->getPokemon(1)==teamList2->getValueAt(2)->getPokemon(1));
-    printAssertEquals(true,teamList->getValueAt(1)->getPokemon(2)==teamList2->getValueAt(1)->getPokemon(2));
-    printAssertEquals(true,teamList->getValueAt(2)->getPokemon(2)==teamList2->getValueAt(2)->getPokemon(2));
 
 }
 

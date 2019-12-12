@@ -64,11 +64,9 @@ ArrayList<Team*>* createTeamList(std::string fileName, PokemonList* PokeList){
                     if (count == 0) {
                         generic->changeName(substr);
                     } else {
-                        std::cout<<"hello1"<<count<<std::endl;
                         int index = PokeList->find(substr);
                         Pokemon* genericMon = PokeList->getValueAt(index);
                         generic->addPokemon(genericMon);
-                        std::cout<<"hello2"<<count<<std::endl;
                     }
                     count+=1;
                     getline(splitter, substr, ',');
