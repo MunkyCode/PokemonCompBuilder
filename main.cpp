@@ -239,7 +239,11 @@ void testTeam(){
     catch(std::exception& e){
         std::cout<<"Fail if there is still a bulbasaur in the printed teams, otherwise pass\n";
     }
-    
+    float* team1Effec = team1->getEffectiveTypes();
+    for(int x = 0; x < 18; x++){
+        std::cout<<team1Effec[x]<<", ";
+    }
+    std::cout<<"\n";
     }
 
 int main() {
