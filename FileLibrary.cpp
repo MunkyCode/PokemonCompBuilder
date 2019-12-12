@@ -35,8 +35,9 @@ void printToFilePokemon(std::string fileName, PokemonList* pokeList, int size) {
 void printToFileTeam(std::string fileName, ArrayList<Team*>* teamList, int size) {
     std::ofstream outf(fileName);
     if (outf) {
+
         for (int i = 0; i < size; i++) {
-            outf << teamList->getValueAt(i)->getName() + ", " + teamList->getValueAt(i)->displayTeam() << std::endl;
+            outf <<  teamList->getValueAt(i)->displayTeamFile() << std::endl;
         }
         outf.close();
     }
@@ -47,26 +48,32 @@ ArrayList<Team*>* createTeamList(std::string fileName, PokemonList* PokeList){
     std::ifstream infile(fileName);
     std::string name;
     if (infile) {
-        std::vector<std::string> result;
         while (infile) {
             std::string line;
             getline(infile,line);
+
             std::stringstream splitter(line); //create string stream from the string
             int count = 0;
             std::string substr;
+            Team *generic = new Team(name);
             if(splitter) {
                 getline(splitter, substr, ',');
                 while (splitter) {
-                    getline(splitter, substr, ',');
-                    Team *generic = new Team(name);
+                    std::cout<<substr<<std::endl;
+
                     if (count == 0) {
                         generic->changeName(substr);
                     } else {
-                        generic->addPokemon(PokeList->getValueAt(PokeList->find(substr)));
+                        std::cout<<"hello1"<<count<<std::endl;
+                        int index = PokeList->find(substr);
+                        Pokemon* genericMon = PokeList->getValueAt(index);
+                        generic->addPokemon(genericMon);
+                        std::cout<<"hello2"<<count<<std::endl;
                     }
-                    TeamList->insertAtEnd(generic);
                     count+=1;
+                    getline(splitter, substr, ',');
                 }
+                TeamList->insertAtEnd(generic);
             }
     } return TeamList;
 }
@@ -84,8 +91,6 @@ PokemonList* createPokemonList(std::string fileName){
     std::string abilities;
     int gen;
     if (infile) {
-        //std::cout<<"working\n";
-        int count = 0;
         while (infile) {
             std::string line;
             getline(infile, line);
@@ -93,13 +98,10 @@ PokemonList* createPokemonList(std::string fileName){
             int count = 0;
             std::string substr;
             if(splitter) {
-                //std::cout<<count<<" hello\n";
                 getline(splitter, substr, ',');
                 while (splitter) { //get first string delimited by comma
-                    //std::cout<<count<<" hello\n";
                     if (count == 0) {
                         dex = std::stoi(substr);
-                        //std::cout<<substr<<"hello"<<std::endl;
                     }
                     if (count == 1) {
                         name = substr;

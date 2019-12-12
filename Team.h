@@ -46,6 +46,7 @@ public:
      * @return string list of pokemon in the team
      */
     std::string displayTeam();
+    std::string displayTeamFile();
 
     //Returns the pokemon in given index.
     const Pokemon* getPokemon(int Index);

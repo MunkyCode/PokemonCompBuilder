@@ -85,6 +85,15 @@ void Team::changeName(std::string nameIn) {
         return team;
     }
 
+std::string Team::displayTeamFile(){
+    std::string team = name+", ";
+    for (int i = 0; i < pokemonArray->itemCount()-1; i++){
+        team += const_cast<Pokemon*>(pokemonArray->getValueAt(i))->getName() + ", ";
+    }
+    team += const_cast<Pokemon*>(pokemonArray->getValueAt(pokemonArray->itemCount()-1))->getName();
+    return team;
+}
+
 
     /**
      * @param index
