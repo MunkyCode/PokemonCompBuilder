@@ -40,7 +40,7 @@ public:
     /**
      *
      */
-    void removePokemon(const Pokemon* pokemonToRemove);
+    void removePokemon(std::string pokemonToRemove);
 
     /**
      * @return string list of pokemon in the team

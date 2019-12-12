@@ -58,8 +58,13 @@ void Team::changeName(std::string nameIn) {
      * @param name of pokemon to remove
      * @throws exception if pokemon is not in array
      */
-    void Team::removePokemon(const Pokemon* pokemonToRemove){
-        int index = pokemonArray->find(pokemonToRemove);
+    void Team::removePokemon(std::string pokemonToRemove){
+        int index = -1;
+        for(int i = pokemonArray->itemCount(); i > 0; i--){
+            if(const_cast<Pokemon*>(pokemonArray->getValueAt(i-1))->getName()==pokemonToRemove){
+                index = i-1;
+            }
+        }
         if(index != -1){
             pokemonArray->removeValueAt(index);
         }
