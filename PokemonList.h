@@ -3,6 +3,7 @@
 //
 #include<string>
 #include "Pokemon.h"
+#include "ArrayList.h"
 #ifndef POKEMONCOMPBUILDER_POKEMONLIST_H
 #define POKEMONCOMPBUILDER_POKEMONLIST_H
 class PokemonList{
@@ -146,11 +147,52 @@ class PokemonList{
                 array = new Pokemon*[50];
             }
         }
-        //TODO add display functions. Display all display by attribute.
+
         /**
+         *
+         * @param type1 has to be a valid type
+         * @param type2 can be valid or null
+         * @return returns list of pokemon mathcing types. if type 2 is null the pokemon returned will have any second type
+         */
+        ArrayList<Pokemon*>* subList(std::string type1, std::string type2){
+            std::string types[18] = {"normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
+            ArrayList<Pokemon*>* pokeList = new ArrayList<Pokemon*>(100);
+            bool validType = false;
+            for(int x = 0; x < 18; x++){
+                if(type1 == types[x]){
+                    validType = true;
+                }
+            }
+            if(!validType){
+                throw std::invalid_argument("Invalid Type");
+            }
+            validType = false;
+            for(int x = 0; x < 18; x ++){
+                if(type2==types[x]){
+                    validType=true;
+                }
+            }
+            if(validType){
+                for(int x = 0; x < currItemCount; x++){
+                    if(array[x]->getType() == type1&&array[x]->getType2()==type2){
+                        pokeList->insertAtEnd(array[x]);
+                    }
+                }
+            }
+            else{
+                for(int x = 0; x < currItemCount; x++){
+                    if(array[x]->getType() == type1){
+                        pokeList->insertAtEnd(array[x]);
+                    }
+                }
+            }
+            return pokeList;
+        }
+/**
          * Searches an int array for a certain value
          * @return the index of the first occurrence of numToFind if it is present, otherwise returns -1
          */
+
         int find(Pokemon* toFind){
             for (int x = 0; x < currItemCount; x++) {
                 if (array[x] == toFind) {
