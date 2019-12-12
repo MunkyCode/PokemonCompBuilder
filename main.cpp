@@ -208,8 +208,39 @@ void testTeam(){
     team1->changeName("new name");
     printAssertEquals("new name",team1->getName());
     team1->addPokemon(pokeList->getValueAt(pokeList->find("Aggron")));
-    std::cout<<team1->displayTeam()<<std::endl;
-}
+    team1->addPokemon(p1);
+    team1->addPokemon(p2);
+    std::cout << team1->displayTeam()<<std::endl;
+    team1->addPokemon(p3);
+    team1->addPokemon(pokeList->getValueAt(pokeList->find("Abra")));
+    team1->addPokemon(p1);
+    std::cout << team1->displayTeam()<<std::endl;
+    try{
+    team1->addPokemon(p3);}
+    catch(std::exception& e){
+        std::cout<<e.what()<<std::endl;
+    }
+    try{
+        team1->removePokemon("Aggron");
+        std::cout << team1->displayTeam()<<std::endl;
+    }
+    catch(std::exception& e){
+        std::cout<<"Fail\n";
+    }
+    team1->addPokemon(pokeList->getValueAt(pokeList->find("Aggron")));
+    try{
+        team1->removePokemon("Bulbasaur");
+        std::cout << team1->displayTeam()<<std::endl;
+        team1->removePokemon("Bulbasaur");
+        std::cout << team1->displayTeam()<<std::endl;
+        team1->removePokemon("Bulbasaur");
+        std::cout <<"Fail should errored here\n";
+    }
+    catch(std::exception& e){
+        std::cout<<"Fail if there is still a bulbasaur in the printed teams, otherwise pass\n";
+    }
+    
+    }
 
 int main() {
     //std::cout << "Hello, World!" << std::endl;
@@ -220,8 +251,8 @@ int main() {
     //testArrayList();
     //testPokemonList();
     //printFromFile("Pokemon - TestData.txt");
-    testFileLibrary();
-    //testTeam();
+    //testFileLibrary();
+    testTeam();
 
 
 
