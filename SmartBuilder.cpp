@@ -48,7 +48,7 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
 }
 
 Team* createTeamCounter(Team* teamToCounter, std::string teamName, PokemonList* pokeData){
-    Team *NewTeam = new Team(teamName);
+    /*Team *NewTeam = new Team(teamName);
     float* arrays[18];
     std::string types[18] = {"normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
     for(int x = 1 ; x < 19; x++) {
@@ -64,7 +64,7 @@ Team* createTeamCounter(Team* teamToCounter, std::string teamName, PokemonList* 
     delete toChooseFrom;
     NewTeam->addPokemon(NewPokemon);
     }
-    return NewTeam;
+    return NewTeam;*/
 }
 
 Team* createBalancedTeam(std::string teamName, PokemonList* pokeData){
