@@ -73,7 +73,7 @@ ArrayList<Team*>* createTeamList(std::string fileName, PokemonList* PokeList){
                 }
                 TeamList->insertAtEnd(generic);
             }
-    }return TeamList;
+    } return TeamList;
 }
 }
 
