@@ -16,20 +16,12 @@ Pokemon::Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::str
     this->generation = generationIn;
     //this-> eggGroup = eggGroupIn;
     this->typeEffectivness = new float[18];
-    int array1Index = 0, array2Index = 0;
-    for(int x = 0; x < 19; x++){
-        if(types[x] == this->type){
-            array1Index = x;
-        }
-        if(types[x] == this-> type2){
-            array2Index = x;
-        }
+    float* type1Arr = returnTypeArray(type);
+    float* type2Arr = returnTypeArray(type2);
+    for(int x = 0; x < 18; x++){
+        typeEffectivness[x] = type1Arr[x]*type2Arr[x];
     }
-    float* array1 = arrays[array1Index];
-    float* array2 = arrays[array2Index];
-    for(int i=0;i<18;i++){
-        this->typeEffectivness[i] = array1[i]*array2[i];
-    }
+    delete[] type1Arr, type2Arr;
 }
 
 //Destructor

@@ -82,8 +82,8 @@ void pokemonTest(){
     std::cout<<"Type Effectivness Testing:"<<std::endl;
     std::cout<<"Bulbasuar:"<<std::endl;
     float* p1Effectivness = p1->getEffectiveTypes();
-    for(int x = 0; x < 18; x++){
-        std::cout<<types[x]<<": "<<p1Effectivness[x]<<", ";
+    for(int x = 1; x < 19; x++){
+        std::cout<<types[x]<<": "<<p1Effectivness[x-1]<<", ";
     }
     std::cout<<"\nSquirtle:\n";
     float* p2Effectivness = p2->getEffectiveTypes();
@@ -260,7 +260,7 @@ int main() {
     //printToFile("testFile.txt");
     //printFromFile("testFile.txt");
     //testPokemonFromFile("PokemonData.csv");
-    //pokemonTest();
+    pokemonTest();
     //testArrayList();
     //testPokemonList();
     //printFromFile("Pokemon - TestData.txt");

@@ -4,6 +4,11 @@
 #include "SmartBuilder.h"
 
 void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
+    float* arrays[18];
+    std::string types[19] = {"null","normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
+    for(int x = 1 ; x < 19; x++){
+        arrays[x-1] = returnTypeArray(x);
+    }
     for(int x = 6-teamToFill->getCount(); x > 0; x--){
         float* effList = teamToFill->getEffectiveTypes();
         int max = 0;
@@ -26,8 +31,8 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
                 count2++;
             }
         }
-        int randInt = rand()% count+1;
-        int chosenIndex = typesIndex[count2];
+        int randInt = rand()% count;
+        int chosenIndex = typesIndex[randInt];
         ArrayList<Pokemon*>* toChooseFrom = pokeData->subList(types[chosenIndex], "");
         randInt = rand()%toChooseFrom->itemCount();
         Pokemon* toAdd = toChooseFrom->getValueAt(randInt);
