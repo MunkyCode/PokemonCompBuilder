@@ -9,7 +9,7 @@
 
     //Constructor
     Team::Team(std::string NameIn){
-        this->pokemonArray = new ArrayList<const Pokemon*>(6);
+        this->pokemonArray = new ArrayList<Pokemon*>(6);
         this->name = NameIn;
     }
 
@@ -20,7 +20,7 @@
 
     //Copy Constructor
     Team::Team(const Team& TeamToCopy){
-        pokemonArray = new ArrayList<const Pokemon*>(6);
+        pokemonArray = new ArrayList<Pokemon*>(6);
         for(int i = 0; i < 6; i++){
             pokemonArray[i] = TeamToCopy.pokemonArray[i];
         }
@@ -29,7 +29,7 @@
     //Assignment Operator
     Team& Team::operator=(const Team& TeamToCopy){
         delete [] pokemonArray;
-        pokemonArray = new ArrayList<const Pokemon*>(6);
+        pokemonArray = new ArrayList<Pokemon*>(6);
         for(int i = 0; i < 6; i++){
             pokemonArray[i] = TeamToCopy.pokemonArray[i];
         }
@@ -46,7 +46,7 @@ void Team::changeName(std::string nameIn) {
     * @param pokemonToAdd
      * @throws exception if array is larger than 6 (team is full)
     */
-    void Team::addPokemon(const Pokemon* pokemonToAdd){
+    void Team::addPokemon(Pokemon* pokemonToAdd){
         if(pokemonArray->itemCount() >= 6){
             throw std::invalid_argument("Team is Full");
         }
@@ -61,7 +61,7 @@ void Team::changeName(std::string nameIn) {
     void Team::removePokemon(std::string pokemonToRemove){
         int index = -1;
         for(int i = pokemonArray->itemCount(); i > 0; i--){
-            if(const_cast<Pokemon*>(pokemonArray->getValueAt(i-1))->getName()==pokemonToRemove){
+            if(pokemonArray->getValueAt(i-1)->getName()==pokemonToRemove){
                 index = i-1;
             }
         }
@@ -79,18 +79,18 @@ void Team::changeName(std::string nameIn) {
     std::string Team::displayTeam(){
         std::string team = name+":";
         for (int i = 0; i < pokemonArray->itemCount()-1; i++){
-            team += const_cast<Pokemon*>(pokemonArray->getValueAt(i))->getName() + ", ";
+            team += pokemonArray->getValueAt(i)->getName() + ", ";
         }
-        team += const_cast<Pokemon*>(pokemonArray->getValueAt(pokemonArray->itemCount()-1))->getName();
+        team += pokemonArray->getValueAt(pokemonArray->itemCount()-1)->getName();
         return team;
     }
 
 std::string Team::displayTeamFile(){
     std::string team = name+",";
     for (int i = 0; i < pokemonArray->itemCount()-1; i++){
-        team += const_cast<Pokemon*>(pokemonArray->getValueAt(i))->getName() + ",";
+        team += pokemonArray->getValueAt(i)->getName() + ",";
     }
-    team += const_cast<Pokemon*>(pokemonArray->getValueAt(pokemonArray->itemCount()-1))->getName();
+    team += pokemonArray->getValueAt(pokemonArray->itemCount()-1)->getName();
     return team;
 }
 
@@ -99,7 +99,7 @@ std::string Team::displayTeamFile(){
      * @param index
      * @return pokemon name at given index
      */
-    const Pokemon* Team::getPokemon(int index){
+    Pokemon* Team::getPokemon(int index){
         return pokemonArray->getValueAt(index);
     }
 

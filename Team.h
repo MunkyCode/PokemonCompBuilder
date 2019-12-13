@@ -13,7 +13,7 @@
 
 class Team{
 private:
-    ArrayList<const Pokemon*>* pokemonArray; //TODO change this to a pokemonList
+    ArrayList<Pokemon*>* pokemonArray;
     std::string name;
 
 public:
@@ -36,7 +36,7 @@ public:
     /**
      * @param
      */
-    void addPokemon(const Pokemon* pokemonToAdd);
+    void addPokemon(Pokemon* pokemonToAdd);
 
     /**
      *
@@ -50,7 +50,7 @@ public:
     std::string displayTeamFile();
 
     //Returns the pokemon in given index.
-    const Pokemon* getPokemon(int Index);
+    Pokemon* getPokemon(int Index);
 
     //Returns type effectivenss of the team
     float* getEffectiveTypes();
