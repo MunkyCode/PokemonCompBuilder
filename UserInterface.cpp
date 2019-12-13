@@ -29,7 +29,7 @@ int main() {
     //balance team and counter team unde create ne
     std::cout <<" 1: Display all pokemon \n 2: Search for a pokemon \n 3: Display pokemon by type \n"
                 " 4: Display all current teams \n 5: Display type effectiveness of a team \n"
-                " 6: Create a new team \n 7: Edit a team \n  8: Fill a team \n"
+                " 6: Create a new team \n 7: Edit a team \n 8: Fill a team \n"
                 "'help' to repeat menu \n 'quit' if done \n -> ";
 
     std::getline(std::cin, input);
@@ -53,32 +53,122 @@ int main() {
                 std::cout <<"What name? \n ->";
                 std::string nameInput = "";
                 getline(std::cin, nameInput);
-                pokeList ->find(nameInput);
+                std::cout<<pokeList->getValueAt(pokeList->find(nameInput))->toString() <<std::endl;
             }
             else if (searchInput == "pokedex"){
                 std::cout <<"What pokedex number? \n ->";
                 std::string dexInput = "";
                 getline(std::cin, dexInput);
-                pokeList ->find(dexInput);
+                std::cout<<pokeList->getValueAt(pokeList->find(stoi(dexInput)))->toString() <<std::endl;
+                //TODO: error management of stoi or improper name/dex
             }
             else {
-                std::cout << " TODO put a catch here?";
+                std::cout << "Invalid search type \n";
             }
         }
         else if (input == "3"){
-            std::cout <<" type display in development";
+            std::cout<< "Would you like to search for one type, or a combination? ('one' or 'combination') \n -> ";
+            std::string val = "";
+            getline(std::cin, val);
+            if (val == "one"){
+                std::cout<<"What type would you like to search for? \n";
+                std::string type = "";
+                getline(std::cin, type);
+                ArrayList<Pokemon*>* subList;
+                subList = pokeList->subList(type,"");
+                for(int x = 0; x<subList->itemCount(); x++){
+                    std::cout<<subList->getValueAt(x)->toString()<<std::endl;
+                }
+                delete(subList);
+            }
+            else if (val == "combination"){
+                std::cout<<"What is the first type would you like to search for? \n -> ";
+                std::string type1 = "";
+                getline(std::cin, type1);
+                std::cout<<"What is the second type would you like to search for? \n -> ";
+                std::string type2 = "";
+                getline(std::cin, type2);
+                ArrayList<Pokemon*>* subList;
+                subList = pokeList->subList(type1,type2);
+                for(int x = 0; x<subList->itemCount(); x++){
+                    std::cout<<subList->getValueAt(x)->toString()<<std::endl;
+                }
+                delete(subList);
+            }
+            else{
+                std::cout << "Invalid entry \n";
+            }
+
         }
         else if (input == "4"){
-            std::cout <<" team display in development";
+            for (int i = 0; i < teamList->itemCount(); i++){
+                std::cout << teamList->getValueAt(i)->displayTeam();
+            }
         }
         else if (input == "5"){
-            std::cout <<" type effectiveness display in development";
+            std::cout <<"What is the name of the team you would like to see? \n -> ";
+            std::string teamName = "";
+            getline(std::cin, teamName);
+            int index = -1;
+            for (int i = 0; i < teamList->itemCount(); i++){
+                if (teamList->getValueAt(i)->getName() == teamName){
+                    index = i;
+                }
+            }
+            if (index != -1) {
+                float* effectiveTypes = teamList->getValueAt(index)->getEffectiveTypes();
+                std::string types[18] = {"normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
+                for(int i = 0; i < 17; i++){
+                    std::cout << types[i] << ": "<<effectiveTypes[i] << ", ";
+                }
+                std::cout<< types[17] << ": "<<effectiveTypes[17]<<"\n";
+            }
+            else{
+                std::cout << "Team Not Found\n";
+            }
         }
         else if (input == "6"){
-            std::cout <<" create team in development";
+            std::cout <<"Would you like to: \n 1: Create a new team\n 2: Create a balanced team\n 3: Counter a given team\n -> ";
+            std::string teamType = "";
+            getline(std::cin, teamType);
+            if(teamType == "1"){
+                std::cout <<"What would you like to name your team? \n -> ";
+                std::string teamName = "";
+                getline(std::cin, teamName);
+                Team* newTeam = new Team(teamName);
+                teamList -> insertAtEnd(newTeam);
+            }
+            else if(teamType == "2"){
+                std::cout <<"What would you like to name your team? \n -> ";
+                std::string teamName = "";
+                getline(std::cin, teamName);
+                Team* newTeam = createBalancedTeam(teamName, pokeList);
+                teamList -> insertAtEnd(newTeam);
+            }
+            else if(teamType == "3"){
+                std::cout <<"What would you like to name your team? \n -> ";
+                std::string teamName = "";
+                getline(std::cin, teamName);
+                std::cout <<"What is the name of the team you would like to counter? \n -> ";
+                std::string counterTeam = "";
+                getline(std::cin, counterTeam);
+                Team* newTeam = createTeamCounter(counterTeam, teamName, pokeList);
+                teamList -> insertAtEnd(newTeam);
+            }
+            else {
+                std::cout << "Invalid entry \n";
+            }
         }
         else if (input == "7"){
-            std::cout <<" edit team in development";
+            std::cout << "Which team would you like to edit? \n -> ";
+            std::string teamName = "";
+            getline(std::cin, teamName);
+            std::cout <<"Would you like to: \n 1: Add a pokemon to a team\n 2: Remove a pokemon from a team\n 3: Change a team name\n -> ";
+            std::string editOption = "";
+            getline(std::cin, editOption);
+            if(editOption == "1"){
+
+            }
         }
         else if (input == "8"){
             std::cout <<" fill team in development";
