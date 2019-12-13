@@ -2,6 +2,7 @@
 // Created by sjwel on 12/12/2019.
 //
 #include "SmartBuilder.h"
+#include "ArrayList.h"
 
 void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
     float* arrays[18];
@@ -46,7 +47,25 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
     }
 }
 
-Team* createTeamCounter(const Team* teamToCounter, std::string teamName, PokemonList* pokeData);
+Team* createTeamCounter(const Team* teamToCounter, std::string teamName, PokemonList* pokeData){
+    Team *NewTeam = new Team(teamName);
+    float* arrays[18];
+    std::string types[18] = {"normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
+    for(int x = 1 ; x < 19; x++) {
+        arrays[x - 1] = returnTypeArray(x);
+    }
+    for(int i = 1;i<6;i++){
+    ArrayList<float> arrayToCounter = teamToCounter->getEffectiveTypes();
+    int typeIndex= arrayToCounter.getMaxIndex();
+    arrayToCounter.insertAt(arrayToCounter.getValueAt(typeIndex)/2,typeIndex);
+    ArrayList<Pokemon*>* toChooseFrom = pokeData->subList(types[typeIndex], "");
+    int randInt = rand()%toChooseFrom->itemCount();
+    Pokemon* NewPokemon = toChooseFrom->getValueAt(randInt);
+    delete toChooseFrom;
+    NewTeam->addPokemon(NewPokemon);
+    }
+    return NewTeam;
+}
 
 Team* createBalancedTeam(std::string teamName, PokemonList* pokeData){
     int randInt = rand()%pokeData->itemCount();

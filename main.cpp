@@ -307,5 +307,25 @@ int main() {
         std::cout<<eff3[x] << ", ";
     }
     std::cout<<"\n";
+
+
+
+    //SmartBuilder Build Against test
+    Team* teamToCounter = new Team("counterMe");
+    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Squritle")));
+    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Wartortle")));
+    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Blastoise")));
+    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Fearow")));
+    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Spearow")));
+    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Pidgey")));
+    Team* teamCountered = createTeamCounter(teamToCounter,"Countered!",pokeList);
+    teamToCounter->displayTeam();
+    teamCountered->displayTeam();
     return 0;
+
+
+
 }
+
+
+
