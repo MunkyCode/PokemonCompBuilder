@@ -37,6 +37,8 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
         randInt = rand()%toChooseFrom->itemCount();
         Pokemon* toAdd = toChooseFrom->getValueAt(randInt);
         teamToFill->addPokemon(toAdd);
+        std::cout<<teamToFill->displayTeam()<<std::endl;
+        std::cout<<toAdd->getName()<<"\n";
 
     }
     for(int x = 0; x < 19; x++){

@@ -6,6 +6,7 @@
 #include "TestLib.h"
 #include "PokemonList.h"
 #include "FileLibrary.h"
+#include "SmartBuilder.h"
 //COMMENT to boost my commit and contributions
 
 void printToFile(std::string fileName){
@@ -260,7 +261,7 @@ int main() {
     //printToFile("testFile.txt");
     //printFromFile("testFile.txt");
     //testPokemonFromFile("PokemonData.csv");
-    pokemonTest();
+    //pokemonTest();
     //testArrayList();
     //testPokemonList();
     //printFromFile("Pokemon - TestData.txt");
@@ -273,6 +274,9 @@ int main() {
     PokemonList* pokeList = createPokemonList("Pokemon - Data.csv");
     test->addPokemon(pokeList->getValueAt(pokeList->find("Charmander")));
     std::cout<<test->displayTeam()<<std::endl;
+    smartTeamFill(test, pokeList);
+    std::cout<<test->getCount()<<std::endl;
+    std::cout<<test->displayTeam()<<" main"<<std::endl;
 
 
 
