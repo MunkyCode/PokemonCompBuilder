@@ -59,9 +59,9 @@ Team* createTeamCounter(Team* teamToCounter, std::string teamName, PokemonList* 
     }
     for(int i = 0;i<6;i++){
     int typeIndex = arrayToCounter.getMaxIndex();
-        //std::cout<<i<<"  "<< typeIndex<<std::endl;
+        std::cout<<i<<"  "<< typeIndex<<std::endl;
     int value = arrayToCounter.getValueAt(typeIndex)/2;
-    //std::cout<<value<<std::endl;
+    std::cout<<value<<std::endl;
     arrayToCounter.insertAt(value,typeIndex);
     ArrayList<Pokemon*>* toChooseFrom = pokeData->subList(types[typeIndex], "");
     int randInt = rand()%toChooseFrom->itemCount();
