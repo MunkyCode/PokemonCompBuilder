@@ -8,13 +8,25 @@
 
 //Constructor
 Pokemon::Pokemon(std::string nameIn, int pokedexIn, std::string typeIn, std::string type2In, std::string abilityIn, int generationIn) {
+    std::string types[18] = {"normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
     this->name = nameIn;
     this->pokedex = pokedexIn;
     this->type = typeIn;
-    this->type2 = type2In;
     this->ability = abilityIn;
     this->generation = generationIn;
     //this-> eggGroup = eggGroupIn;
+    bool test = false;
+    for(int x = 0; x < 18; x++){
+        if(types[x] == type2In){
+            test = true;
+        }
+    }
+    if(!test){
+        type2 = "null";
+    }
+    else{
+        type2 = type2In;
+    }
     this->typeEffectivness = new float[18];
     float* type1Arr = returnTypeArray(type);
     float* type2Arr = returnTypeArray(type2);

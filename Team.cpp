@@ -110,9 +110,9 @@ std::string Team::displayTeamFile(){
             effectiveArray[x] = 1;
         }
         for (int i = 0; i < pokemonArray->itemCount(); i++) {
-            float* currPoke = const_cast<Pokemon*>(pokemonArray->getValueAt(i))->getEffectiveTypes();
+            float* currPoke = pokemonArray->getValueAt(i)->getEffectiveTypes();
             for(int x = 0; x < 18; x++){
-                effectiveArray[x] *=currPoke[x];
+                effectiveArray[x] = effectiveArray[x] *currPoke[x];
             }
         }
         return effectiveArray;

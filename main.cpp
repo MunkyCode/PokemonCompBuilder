@@ -276,7 +276,11 @@ int main() {
     std::cout<<test->displayTeam()<<std::endl;
     smartTeamFill(test, pokeList);
     std::cout<<test->getCount()<<std::endl;
-    std::cout<<test->displayTeam()<<" main"<<std::endl;
+    std::cout<<test->displayTeam()<<std::endl;
+    float* eff = test->getEffectiveTypes();
+    for(int x = 0; x < 18; x++){
+        std::cout<<eff[x] << " ";
+    }
 
 
 

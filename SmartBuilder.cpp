@@ -10,11 +10,9 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
         arrays[x-1] = returnTypeArray(x);
     }
     for(int x = 6-teamToFill->getCount(); x > 0; x--){
+        std::cout<<"hello------------------------\n";
         float* effList = teamToFill->getEffectiveTypes();
-        for(int x = 0; x < 18; x++){
-            std::cout << effList[x] << ", ";
-        }
-        std::cout<<std::endl;//TODO Fix this. It dosen't target the right thing.
+        //TODO Fix this. It dosen't target the right thing.
         int max = 0;
         for(int i = 1; i < 18; i++){
             if(effList[i] > effList[max]){
@@ -22,26 +20,28 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
             }
         }
         int count = 0;
-        for(int x = 0; x < 18; x++){
-            if(arrays[x][max] < 1){
+        for(int i = 0; i < 18; i++){
+            if(arrays[i][max] < 1){
                 count++;
             }
         }
-        int typesIndex[count];
+        int typesIndex[count+1];
         int count2 = 0;
-        for(int x = 0; x < 18; x++){
-            if(arrays[x][max] < 1){
-                typesIndex[count2] = x;
+        for(int i = 0; i < 18; i++){
+            if(arrays[i][max] < 1){
+                typesIndex[count2] = i;
+                std::cout<<types[i]<<std::endl;
                 count2++;
             }
         }
-        int randInt = rand()% count;
+        int randInt = rand()% count-1;
         int chosenIndex = typesIndex[randInt];
-        ArrayList<Pokemon*>* toChooseFrom = pokeData->subList(types[chosenIndex], "");
-        randInt = rand()%toChooseFrom->itemCount();
+        ArrayList<Pokemon*>* toChooseFrom = pokeData->subList(types[chosenIndex+1], "");
+        randInt = rand()%toChooseFrom->itemCount()-1;
         Pokemon* toAdd = toChooseFrom->getValueAt(randInt);
+        //std::cout<<"hello2\n";
+        std::cout<<toAdd->getType()<<" - chosen\n";
         teamToFill->addPokemon(toAdd);
-
 
     }
     for(int x = 0; x<18; x++){
