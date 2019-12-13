@@ -39,6 +39,9 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
         teamToFill->addPokemon(toAdd);
 
     }
+    for(int x = 0; x < 19; x++){
+        delete[] arrays[x];
+    }
 }
 
 Team* createTeamCounter(const Team* teamToCounter, std::string teamName, PokemonList pokeData);
