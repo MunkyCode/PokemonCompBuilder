@@ -314,27 +314,27 @@ int main() {
     //SmartBuilder Build Against test
     Team* teamToCounter = new Team("counterMe");
 
-    int index = pokeList->find("Rattata");
+    int index = pokeList->find("Zangoose");
     Pokemon* genericMon = pokeList->getValueAt(index);
     teamToCounter->addPokemon(genericMon);
 
-    index = pokeList->find("Rattata");
+    index = pokeList->find("Zangoose");
     genericMon = pokeList->getValueAt(index);
     teamToCounter->addPokemon(genericMon);
 
-    index = pokeList->find("Rattata");
+    index = pokeList->find("Zangoose");
     genericMon = pokeList->getValueAt(index);
     teamToCounter->addPokemon(genericMon);
 
-    index = pokeList->find("Rattata");
+    index = pokeList->find("Zangoose");
     genericMon = pokeList->getValueAt(index);
     teamToCounter->addPokemon(genericMon);
 
-    index = pokeList->find("Rattata");
+    index = pokeList->find("Zangoose");
     genericMon = pokeList->getValueAt(index);
     teamToCounter->addPokemon(genericMon);
 
-    index = pokeList->find("Rattata");
+    index = pokeList->find("Zangoose");
     genericMon = pokeList->getValueAt(index);
     teamToCounter->addPokemon(genericMon);
     std::string types[19] = {"null","normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};

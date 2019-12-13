@@ -49,20 +49,19 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
 
 Team* createTeamCounter(Team* teamToCounter, std::string teamName, PokemonList* pokeData){
     Team *NewTeam = new Team(teamName);
-    float* arrays[18];
     std::string types[18] = {"normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
-    for(int x = 1 ; x < 19; x++) {
-        arrays[x - 1] = returnTypeArray(x);
-    }
-
     ArrayList<float> arrayToCounter = ArrayList<float>(18);
-    for(int y=1;y<18;y++) {
-        arrayToCounter.insertAtEnd(teamToCounter->getEffectiveTypes()[y]);
+    float* EffectiveTypes = teamToCounter->getEffectiveTypes();
+    for(int y=0;y<18;y++) {
+        float itemToAdd = EffectiveTypes[y];
+        //std::cout<<itemToAdd<<std::endl;
+        arrayToCounter.insertAtEnd(itemToAdd);
     }
     for(int i = 0;i<6;i++){
     int typeIndex = arrayToCounter.getMaxIndex();
-        std::cout<<i<<"  " << typeIndex<<std::endl;
+        //std::cout<<i<<"  "<< typeIndex<<std::endl;
     int value = arrayToCounter.getValueAt(typeIndex)/2;
+    //std::cout<<value<<std::endl;
     arrayToCounter.insertAt(value,typeIndex);
     ArrayList<Pokemon*>* toChooseFrom = pokeData->subList(types[typeIndex], "");
     int randInt = rand()%toChooseFrom->itemCount();
