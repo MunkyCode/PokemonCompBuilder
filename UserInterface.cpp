@@ -19,8 +19,8 @@ int main() {
     PokemonList* pokeList;
     pokeList = createPokemonList("Pokemon - Data.csv");
     ArrayList<Team*>* teamList;
-    //teamList = createTeamList("team.txt", pokeList);
-    teamList = new ArrayList<Team*>(10);
+    teamList = createTeamList("team.txt", pokeList);
+    //teamList = new ArrayList<Team*>(10);
 
     std::string input = "";
 
@@ -146,7 +146,7 @@ int main() {
                 std::cout <<"Would you like to: \n 1: Add a pokemon\n 2: Remove a pokemon\n 3: Change the name \n 'done' to finish editing \n -> ";
                 std::string editOption = "";
                 getline(std::cin, editOption);
-                while (editOption != "done"){
+                while (editOption != "done"){ //TODO help menu
                     if(editOption == "1"){
                         std::cout <<"What is the name of the pokemon you would like to add? \n -> ";
                         std::string pokemonName = "";
