@@ -59,7 +59,7 @@ ArrayList<Team*>* createTeamList(std::string fileName, PokemonList* PokeList){
             if(splitter) {
                 getline(splitter, substr, ',');
                 while (splitter) {
-                    std::cout<<substr<<std::endl;
+                    //std::cout<<substr<<std::endl;
 
                     if (count == 0) {
                         generic->changeName(substr);
