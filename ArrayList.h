@@ -22,6 +22,8 @@ private:
      * @post: array points to a new array of twice the size with values copied from the old one,
      *        the old array is deleted.
      */
+    int getValueAt();
+
     void doubleCapacity(){
         currCapacity *= 2;
         T* temp = array;
@@ -107,11 +109,11 @@ public:
     }
 
     int getMaxIndex(){
-        int Max = getValueAt(0);
+        int Max = array[0];
         int MaxNdx = 0;
         for(int x = 0;x<currCapacity;x++){
-            if(getValueAt(x)>Max){
-                Max = getValueAt(x);
+            if(array[x]>Max){
+                Max = array[x];
                 MaxNdx = x;
             }
         }

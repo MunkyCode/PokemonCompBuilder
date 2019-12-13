@@ -7,6 +7,7 @@
 #include "PokemonList.h"
 #include "FileLibrary.h"
 #include "SmartBuilder.h"
+#include "TypeEffectiveness.h"
 //COMMENT to boost my commit and contributions
 
 void printToFile(std::string fileName){
@@ -257,6 +258,7 @@ void testTeam(){
 
 int main() {
     srand(time(NULL));
+    PokemonList* pokeList = createPokemonList("Pokemon - Data.csv");
     //std::cout << "Hello, World!" << std::endl;
     //printToFile("testFile.txt");
     //printFromFile("testFile.txt");
@@ -269,9 +271,8 @@ int main() {
     //testTeam();
 
 
-
+/*
     Team* test = new Team("Test");
-    PokemonList* pokeList = createPokemonList("Pokemon - Data.csv");
     test->addPokemon(pokeList->getValueAt(pokeList->find("Charmander")));
     std::cout<<test->displayTeam()<<std::endl;
     smartTeamFill(test, pokeList);
@@ -309,18 +310,42 @@ int main() {
     std::cout<<"\n";
 
 
-
+*/
     //SmartBuilder Build Against test
     Team* teamToCounter = new Team("counterMe");
-    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Squritle")));
-    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Wartortle")));
-    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Blastoise")));
-    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Fearow")));
-    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Spearow")));
-    teamToCounter->addPokemon(pokeList->getValueAt(pokeList->find("Pidgey")));
-    Team* teamCountered = createTeamCounter(teamToCounter,"Countered!",pokeList);
-    teamToCounter->displayTeam();
-    teamCountered->displayTeam();
+
+    int index = pokeList->find("Rattata");
+    Pokemon* genericMon = pokeList->getValueAt(index);
+    teamToCounter->addPokemon(genericMon);
+
+    index = pokeList->find("Rattata");
+    genericMon = pokeList->getValueAt(index);
+    teamToCounter->addPokemon(genericMon);
+
+    index = pokeList->find("Rattata");
+    genericMon = pokeList->getValueAt(index);
+    teamToCounter->addPokemon(genericMon);
+
+    index = pokeList->find("Rattata");
+    genericMon = pokeList->getValueAt(index);
+    teamToCounter->addPokemon(genericMon);
+
+    index = pokeList->find("Rattata");
+    genericMon = pokeList->getValueAt(index);
+    teamToCounter->addPokemon(genericMon);
+
+    index = pokeList->find("Rattata");
+    genericMon = pokeList->getValueAt(index);
+    teamToCounter->addPokemon(genericMon);
+    std::string types[19] = {"null","normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
+
+    for(int x = 0; x < 18; x++){
+        std::cout<<types[x+1]<<": "<<teamToCounter->getEffectiveTypes()[x]<<", ";
+    }
+    std::cout<<"\n";
+    Team* teamCountered = createTeamCounter(teamToCounter,"Countered", pokeList);
+    std::cout<<teamToCounter->displayTeam()<<std::endl;
+    std::cout<<teamCountered->displayTeam()<<std::endl;
     return 0;
 
 
