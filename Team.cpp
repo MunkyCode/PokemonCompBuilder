@@ -77,7 +77,7 @@ void Team::changeName(std::string nameIn) {
      * @return string list of pokemon in the team
      */
     std::string Team::displayTeam(){
-        std::string team = name+":";
+        std::string team = name+": ";
         for (int i = 0; i < pokemonArray->itemCount()-1; i++){
             team += pokemonArray->getValueAt(i)->getName() + ", ";
         }
@@ -112,9 +112,10 @@ std::string Team::displayTeamFile(){
         for (int i = 0; i < pokemonArray->itemCount(); i++) {
             float* currPoke = pokemonArray->getValueAt(i)->getEffectiveTypes();
             for(int x = 0; x < 18; x++){
-                effectiveArray[x] = effectiveArray[x] *currPoke[x];
+                effectiveArray[x] = effectiveArray[x] * currPoke[x];
             }
         }
+
         return effectiveArray;
     }
 
