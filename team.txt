@@ -1,4 +1,4 @@
-UWU,Magikarp,Magikarp,Magikarp,Magikarp
-,
-,
-test,Anorith,Conkeldurr,Tyrunt,Moltres,Drilbur,Clamperl,Clamperl
+UWU,Magikarp,Magikarp
+test,Anorith,Conkeldurr,Tyrunt,Moltres,Drilbur,Clamperl
+
+
