@@ -19,8 +19,8 @@ int main() {
     PokemonList* pokeList;
     pokeList = createPokemonList("Pokemon - Data.csv");
     ArrayList<Team*>* teamList;
-    teamList = createTeamList("team.txt", pokeList);
-
+    //teamList = createTeamList("team.txt", pokeList);
+    teamList = new ArrayList<Team*>(10);
 
     std::string input = "";
 
@@ -105,9 +105,9 @@ int main() {
                 std::cout <<"There are no teams in the list \n";
             }
             else {
-                std::cout <<"hello\n";
+                //std::cout <<teamList->getValueAt(0)->getName()<<"\n";
                 for (int i = 0; i < teamList->itemCount(); i++){
-                    std::cout << teamList->getValueAt(i)->displayTeam();
+                    std::cout << teamList->getValueAt(i)->displayTeam() << "\n";
                 }
             }
         }
@@ -178,6 +178,8 @@ int main() {
                         getline(std::cin, newTeamName);
                         newTeam->changeName(newTeamName);
                     }
+                    std::cout << " -> ";
+                    getline(std::cin, editOption);
                 }
             }
             else if(teamType == "2"){
@@ -194,8 +196,19 @@ int main() {
                 std::cout <<"What is the name of the team you would like to counter? \n -> ";
                 std::string counterTeam = "";
                 getline(std::cin, counterTeam);
-                //Team* newTeam = createTeamCounter(counterTeam, teamName, pokeList);
-                //teamList -> insertAtEnd(newTeam);
+                Team* teamCounter = nullptr;
+                for(int x = 0; x < teamList->itemCount(); x++){
+                    if(counterTeam==teamList->getValueAt(x)->getName()){
+                        teamCounter = teamList->getValueAt(x);
+                    }
+                }
+                if(teamCounter!=nullptr){
+                    Team* newTeam = createTeamCounter(teamCounter, teamName, pokeList);
+                    teamList -> insertAtEnd(newTeam);
+                }
+                else{
+                    std::cout<< "Invalid Team Name\n";
+                }
             }
             else {
                 std::cout << "Invalid entry \n";
@@ -271,4 +284,5 @@ int main() {
         std::cout<<" -> ";
         getline(std::cin, input);
     }
+    printToFileTeam("team.txt", teamList, teamList->itemCount());
 }
