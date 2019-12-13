@@ -106,6 +106,18 @@ public:
         return array[index];
     }
 
+    int getMaxIndex(){
+        int Max = getValueAt(0);
+        int MaxNdx = 0;
+        for(int x = 0;x<currCapacity;x++){
+            if(getValueAt(x)>Max){
+                Max = getValueAt(x);
+                MaxNdx = x;
+            }
+        }
+        return MaxNdx;
+    }
+
     /**
      * checks if there are any valid items in the list
      * @return true if there are no valid items in the list, false otherwise

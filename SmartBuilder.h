@@ -14,7 +14,7 @@
 
 void smartTeamFill(Team* teamToFill, PokemonList* pokeData);
 
-Team* createTeamCounter(const Team* teamToCounter, std::string teamName, PokemonList* pokeData);
+Team* createTeamCounter(const Team* const, std::string teamName, PokemonList* pokeData);
 
 Team* createBalancedTeam(std::string teamName, PokemonList* pokeData);
 
