@@ -5,14 +5,12 @@
 
 void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
     float* arrays[18];
-    std::string types[19] = {"null","normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
+    std::string types[18] = {"normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"};
     for(int x = 1 ; x < 19; x++){
         arrays[x-1] = returnTypeArray(x);
     }
     for(int x = 6-teamToFill->getCount(); x > 0; x--){
-        std::cout<<"hello------------------------\n";
         float* effList = teamToFill->getEffectiveTypes();
-        //TODO Fix this. It dosen't target the right thing.
         int max = 0;
         for(int i = 1; i < 18; i++){
             if(effList[i] > effList[max]){
@@ -30,18 +28,17 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
         for(int i = 0; i < 18; i++){
             if(arrays[i][max] < 1){
                 typesIndex[count2] = i;
-                std::cout<<types[i]<<std::endl;
                 count2++;
             }
         }
-        int randInt = rand()% count-1;
+        int randInt = rand()% (count-1);
         int chosenIndex = typesIndex[randInt];
-        ArrayList<Pokemon*>* toChooseFrom = pokeData->subList(types[chosenIndex+1], "");
-        randInt = rand()%toChooseFrom->itemCount()-1;
+        ArrayList<Pokemon*>* toChooseFrom = pokeData->subList(types[chosenIndex], "");
+        randInt = rand()%toChooseFrom->itemCount();
         Pokemon* toAdd = toChooseFrom->getValueAt(randInt);
-        //std::cout<<"hello2\n";
-        std::cout<<toAdd->getType()<<" - chosen\n";
         teamToFill->addPokemon(toAdd);
+        delete toChooseFrom;
+        delete[] effList;
 
     }
     for(int x = 0; x<18; x++){
@@ -49,8 +46,14 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
     }
 }
 
-Team* createTeamCounter(const Team* teamToCounter, std::string teamName, PokemonList pokeData);
+Team* createTeamCounter(const Team* teamToCounter, std::string teamName, PokemonList* pokeData);
 
-Team* createBalancedTeam(std::string teamName, PokemonList pokeData);
+Team* createBalancedTeam(std::string teamName, PokemonList* pokeData){
+    int randInt = rand()%pokeData->itemCount();
+    Team* toReturn = new Team(teamName);
+    toReturn->addPokemon(pokeData->getValueAt(randInt));
+    smartTeamFill(toReturn, pokeData);
+    return toReturn;
+}
 
 

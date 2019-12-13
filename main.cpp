@@ -279,12 +279,33 @@ int main() {
     std::cout<<test->displayTeam()<<std::endl;
     float* eff = test->getEffectiveTypes();
     for(int x = 0; x < 18; x++){
-        std::cout<<eff[x] << " ";
+        std::cout<<eff[x] << ", ";
     }
+    std::cout<<"\n";
 
+    Team* test2 = new Team("test2");
+    test2->addPokemon(pokeList->getValueAt(pokeList->find("Charmander")));
+    try{
+    test2->addPokemon(pokeList->getValueAt(pokeList->find("Pikachu")));}
+    catch(std::exception& e){
+        std::cout<<e.what()<<std::endl;
+    }
+    smartTeamFill(test2, pokeList);
+    std::cout<<test2->displayTeam()<<"\n";
 
+    float* eff2 = test2->getEffectiveTypes();
+    for(int x = 0; x < 18; x++){
+        std::cout<<eff2[x] << ", ";
+    }
+    std::cout << "\n";
 
+    Team* test3 = createBalancedTeam("woot", pokeList);
+    std::cout<<test3->displayTeam()<<"\n";
 
-
+    float* eff3 = test3->getEffectiveTypes();
+    for(int x = 0; x < 18; x++){
+        std::cout<<eff3[x] << ", ";
+    }
+    std::cout<<"\n";
     return 0;
 }
