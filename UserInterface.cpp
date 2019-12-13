@@ -18,7 +18,9 @@ int main() {
     srand(time(NULL));
     PokemonList* pokeList;
     pokeList = createPokemonList("Pokemon - Data.csv");
-    ArrayList<Team*>* teamList = new ArrayList<Team*>(10);
+    ArrayList<Team*>* teamList;
+    teamList = createTeamList("team.txt", pokeList);
+
 
     std::string input = "";
 
@@ -28,15 +30,15 @@ int main() {
     std::cout <<" 1: Display all pokemon \n 2: Search for a pokemon \n 3: Display pokemon by type \n"
                 " 4: Display all current teams \n 5: Display type effectiveness of a team \n"
                 " 6: Create a new team \n 7: Edit a team \n  8: Fill a team \n"
-                " 9: Import teams \n 10: Export teams \n 'help' to repeat menu \n 'quit' if done \n ->";
+                "'help' to repeat menu \n 'quit' if done \n -> ";
 
     std::getline(std::cin, input);
     while (input != "quit"){
         if (input == "help"){
-           std::cout << " 1: Display all pokemon \n 2: Search for a pokemon \n 3: Display pokemon by type \n "
-            " 4: Display all current teams \n 5: Display type effectiveness of a team \n"
-            " 6: Create a new team \n 7: Edit a team \n 8: Create a balanced team \n 9: Fill a team \n"
-            "10: Counter a team \n 11: Import teams \n 12: Export teams \n 'help' to repeat menu \n 'quit' if done \n ->";
+           std::cout << " 1: Display all pokemon \n 2: Search for a pokemon \n 3: Display pokemon by type \n"
+                        " 4: Display all current teams \n 5: Display type effectiveness of a team \n"
+                        " 6: Create a new team \n 7: Edit a team \n  8: Fill a team \n"
+                        "'help' to repeat menu \n 'quit' if done \n -> ";
         }
         else if (input == "1"){
             std::cout << createPokemonList;
@@ -78,15 +80,6 @@ int main() {
         }
         else if (input == "8"){
             std::cout <<" fill team in development";
-        }
-        else if (input == "9"){
-            std::cout<<"What file would you like to import?\n -> ";
-            std::string fileName = "";
-            getline(std::cin, fileName);
-            
-        }
-        else if (input == "10"){
-            std::cout <<" export in development";
         }
         std::cout<<" -> ";
         getline(std::cin, input);
