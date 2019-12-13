@@ -275,8 +275,8 @@ int main() {
     test->addPokemon(pokeList->getValueAt(pokeList->find("Charmander")));
     std::cout<<test->displayTeam()<<std::endl;
     smartTeamFill(test, pokeList);
-    //std::cout<<test->getCount()<<std::endl;
-    //std::cout<<test->displayTeam()<<" main"<<std::endl;
+    std::cout<<test->getCount()<<std::endl;
+    std::cout<<test->displayTeam()<<" main"<<std::endl;
 
 
 

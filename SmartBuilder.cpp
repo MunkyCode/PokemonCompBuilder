@@ -11,6 +11,10 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
     }
     for(int x = 6-teamToFill->getCount(); x > 0; x--){
         float* effList = teamToFill->getEffectiveTypes();
+        for(int x = 0; x < 18; x++){
+            std::cout << effList[x] << ", ";
+        }
+        std::cout<<std::endl;//TODO Fix this. It dosen't target the right thing.
         int max = 0;
         for(int i = 1; i < 18; i++){
             if(effList[i] > effList[max]){
@@ -37,11 +41,10 @@ void smartTeamFill(Team* teamToFill, PokemonList* pokeData){
         randInt = rand()%toChooseFrom->itemCount();
         Pokemon* toAdd = toChooseFrom->getValueAt(randInt);
         teamToFill->addPokemon(toAdd);
-        std::cout<<teamToFill->displayTeam()<<std::endl;
-        std::cout<<toAdd->getName()<<"\n";
+
 
     }
-    for(int x = 0; x < 19; x++){
+    for(int x = 0; x<18; x++){
         delete[] arrays[x];
     }
 }
