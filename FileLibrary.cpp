@@ -46,35 +46,41 @@ void printToFileTeam(std::string fileName, ArrayList<Team*>* teamList, int size)
 ArrayList<Team*>* createTeamList(std::string fileName, PokemonList* PokeList){
     ArrayList<Team*>* TeamList = new ArrayList<Team*>(10);
     std::ifstream infile(fileName);
-    std::string name;
+    std::string name = "";
+    std::string line;
+    getline(infile,line);
     if (infile) {
         while (infile) {
-            std::string line;
-            getline(infile,line);
-
             std::stringstream splitter(line); //create string stream from the string
             int count = 0;
             std::string substr;
             Team *generic = new Team(name);
+            getline(splitter, substr, ',');
             if(splitter) {
-                getline(splitter, substr, ',');
                 while (splitter) {
-                    //std::cout<<substr<<std::endl;
-
+                    //std::cout<<substr<<" "<<count<<std::endl;
                     if (count == 0) {
                         generic->changeName(substr);
                     } else {
                         int index = PokeList->find(substr);
-                        Pokemon* genericMon = PokeList->getValueAt(index);
-                        generic->addPokemon(genericMon);
+                        //std::cout<<"hello\n";
+                        try{
+                            Pokemon* genericMon = PokeList->getValueAt(index);
+                            generic->addPokemon(genericMon);
+                        }
+                        catch(std::exception& e){
+                            std::cout<<"Team:"<<generic->getName()<<", Imported Wrong\n";
+                        }
                     }
-                    count+=1;
+                    count++;
                     getline(splitter, substr, ',');
                 }
                 TeamList->insertAtEnd(generic);
             }
-    } return TeamList;
-}
+            getline(infile,line);
+        }
+        return TeamList;
+    }
 }
 
 

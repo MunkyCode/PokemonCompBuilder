@@ -53,14 +53,30 @@ int main() {
                 std::cout <<"What name? \n ->";
                 std::string nameInput = "";
                 getline(std::cin, nameInput);
-                std::cout<<pokeList->getValueAt(pokeList->find(nameInput))->toString() <<std::endl;
+                try{
+                    std::cout<<pokeList->getValueAt(pokeList->find(nameInput))->toString() <<std::endl;
+                }
+                catch(std::exception& e){
+                    std::cout<<"Invalid Pokemon Name\n";
+                }
             }
             else if (searchInput == "pokedex"){
                 std::cout <<"What pokedex number? \n ->";
                 std::string dexInput = "";
                 getline(std::cin, dexInput);
-                std::cout<<pokeList->getValueAt(pokeList->find(stoi(dexInput)))->toString() <<std::endl;
-                //TODO: error management of stoi or improper name/dex
+                int dex = -1;
+                try{
+                    dex = stoi(dexInput);
+                    try{
+                        std::cout<<pokeList->getValueAt(pokeList->find(dex))->toString() <<std::endl;
+                    }
+                    catch(std::out_of_range& e){
+                        std::cout<<"No such pokedex\n";
+                    }
+                }
+                catch(std::exception&e){
+                    std::cout<<"Input must be a Number\n";
+                }
             }
             else {
                 std::cout << "Invalid search type \n";
@@ -75,11 +91,17 @@ int main() {
                 std::string type = "";
                 getline(std::cin, type);
                 ArrayList<Pokemon*>* subList;
-                subList = pokeList->subList(type,"");
-                for(int x = 0; x<subList->itemCount(); x++){
-                    std::cout<<subList->getValueAt(x)->toString()<<std::endl;
+                try{
+                    subList = pokeList->subList(type,"");
+                    for(int x = 0; x<subList->itemCount(); x++){
+                        std::cout<<subList->getValueAt(x)->toString()<<std::endl;
+                    }
+                    delete(subList);
                 }
-                delete(subList);
+                catch(std::invalid_argument& e){
+                    std::cout<<"Invalid Type\n";
+                }
+
             }
             else if (val == "combination"){
                 std::cout<<"What is the first type would you like to search for? \n -> ";
@@ -89,11 +111,17 @@ int main() {
                 std::string type2 = "";
                 getline(std::cin, type2);
                 ArrayList<Pokemon*>* subList;
-                subList = pokeList->subList(type1,type2);
-                for(int x = 0; x<subList->itemCount(); x++){
-                    std::cout<<subList->getValueAt(x)->toString()<<std::endl;
+                try{
+                    subList = pokeList->subList(type1, type2);
+                    for(int x = 0; x<subList->itemCount(); x++){
+                        std::cout<<subList->getValueAt(x)->toString()<<std::endl;
+                    }
+                    delete(subList);
                 }
-                delete(subList);
+                catch(std::invalid_argument& e){
+                    std::cout<<"Invalid Type\n";
+                }
+
             }
             else{
                 std::cout << "Invalid entry \n";
@@ -137,81 +165,101 @@ int main() {
             std::cout <<"Would you like to: \n 1: Create a new team\n 2: Create a balanced team\n 3: Counter a given team\n -> ";
             std::string teamType = "";
             getline(std::cin, teamType);
-            if(teamType == "1"){
+            bool valid = false;
+            std::string teamName;
+            bool validType = false;
+            if(teamType=="1"||teamType=="2"||teamType == "3"){
+                validType = true;
                 std::cout <<"What would you like to name your team? \n -> ";
-                std::string teamName = "";
+                teamName = "";
                 getline(std::cin, teamName);
-                Team* newTeam = new Team(teamName);
-                teamList -> insertAtEnd(newTeam);
-                std::cout <<"Would you like to: \n 1: Add a pokemon\n 2: Remove a pokemon\n 3: Change the name \n 'done' to finish editing \n -> ";
-                std::string editOption = "";
-                getline(std::cin, editOption);
-                while (editOption != "done"){ //TODO help menu
-                    if(editOption == "1"){
-                        std::cout <<"What is the name of the pokemon you would like to add? \n -> ";
-                        std::string pokemonName = "";
-                        getline(std::cin, pokemonName);
-                        try{
-                            newTeam->addPokemon(pokeList->getValueAt(pokeList->find(pokemonName)));
-                        }
-                        catch(std::invalid_argument& e){
-                            std::cout<<"Team is full\n";
-                        }
-                        catch(std::out_of_range& e){
-                            std::cout<<"Invalid Pokemon name\n";
-                        }
+                valid = true;
+                for(int o = 0; o < teamList->itemCount(); o++){
+                    if(teamList->getValueAt(o)->getName() == teamName){
+                        valid = false;
                     }
-                    else if(editOption == "2"){
-                        std::cout <<"What is the name of the pokemon you would like to remove? \n -> ";
-                        std::string pokemonName = "";
-                        getline(std::cin, pokemonName);
-                        try{
-                            newTeam->removePokemon(pokemonName);
-                        }
-                        catch(std::invalid_argument& e){
-                            std::cout<<"Pokemon not in team\n";
-                        }
-                    }
-                    else if(editOption == "3"){
-                        std::cout <<"What would you like the new name to be? \n -> ";
-                        std::string newTeamName = "";
-                        getline(std::cin, newTeamName);
-                        newTeam->changeName(newTeamName);
-                    }
-                    std::cout << " -> ";
+                }
+            }
+            if(valid){
+                if(teamType == "1"){
+                    Team* newTeam = new Team(teamName);
+                    teamList -> insertAtEnd(newTeam);
+                    std::cout <<"Would you like to: \n 1: Add a pokemon\n 2: Remove a pokemon\n 3: Change the name \n 'done' to finish editing \n 'help' to bring up this menu again\n -> ";
+                    std::string editOption = "";
                     getline(std::cin, editOption);
-                }
-            }
-            else if(teamType == "2"){
-                std::cout <<"What would you like to name your team? \n -> ";
-                std::string teamName = "";
-                getline(std::cin, teamName);
-                Team* newTeam = createBalancedTeam(teamName, pokeList);
-                teamList -> insertAtEnd(newTeam);
-            }
-            else if(teamType == "3"){
-                std::cout <<"What would you like to name your team? \n -> ";
-                std::string teamName = "";
-                getline(std::cin, teamName);
-                std::cout <<"What is the name of the team you would like to counter? \n -> ";
-                std::string counterTeam = "";
-                getline(std::cin, counterTeam);
-                Team* teamCounter = nullptr;
-                for(int x = 0; x < teamList->itemCount(); x++){
-                    if(counterTeam==teamList->getValueAt(x)->getName()){
-                        teamCounter = teamList->getValueAt(x);
+                    while (editOption != "done"){
+                        if(editOption == "1"){
+                            std::cout <<"What is the name of the pokemon you would like to add? \n -> ";
+                            std::string pokemonName = "";
+                            getline(std::cin, pokemonName);
+                            try{
+                                newTeam->addPokemon(pokeList->getValueAt(pokeList->find(pokemonName)));
+                            }
+                            catch(std::invalid_argument& e){
+                                std::cout<<"Team is full\n";
+                            }
+                            catch(std::out_of_range& e){
+                                std::cout<<"Invalid Pokemon name\n";
+                            }
+                        }
+                        else if(editOption == "2"){
+                            std::cout <<"What is the name of the pokemon you would like to remove? \n -> ";
+                            std::string pokemonName = "";
+                            getline(std::cin, pokemonName);
+                            try{
+                                newTeam->removePokemon(pokemonName);
+                            }
+                            catch(std::invalid_argument& e){
+                                std::cout<<"Pokemon not in team\n";
+                            }
+                        }
+                        else if(editOption == "3"){
+                            std::cout <<"What would you like the new name to be? \n -> ";
+                            std::string newTeamName = "";
+                            getline(std::cin, newTeamName);
+                            newTeam->changeName(newTeamName);
+                        }
+                        else if(editOption == "help"){
+                            std::cout <<"Would you like to: \n 1: Add a pokemon\n 2: Remove a pokemon\n 3: Change the name \n 'done' to finish editing \n 'help' to bring up this menu again\n";
+                        }
+                        else{
+                            std::cout<<"Not a valid option\n";
+                        }
+                        std::cout << " -> ";
+                        getline(std::cin, editOption);
                     }
                 }
-                if(teamCounter!=nullptr){
-                    Team* newTeam = createTeamCounter(teamCounter, teamName, pokeList);
+                else if(teamType == "2"){
+                    Team* newTeam = createBalancedTeam(teamName, pokeList);
                     teamList -> insertAtEnd(newTeam);
                 }
-                else{
-                    std::cout<< "Invalid Team Name\n";
+                else if(teamType == "3"){
+                    std::cout <<"What is the name of the team you would like to counter? \n -> ";
+                    std::string counterTeam = "";
+                    getline(std::cin, counterTeam);
+                    Team* teamCounter = nullptr;
+                    for(int x = 0; x < teamList->itemCount(); x++){
+                        if(counterTeam==teamList->getValueAt(x)->getName()){
+                            teamCounter = teamList->getValueAt(x);
+                        }
+                    }
+                    if(teamCounter!=nullptr){
+                        Team* newTeam = createTeamCounter(teamCounter, teamName, pokeList);
+                        teamList -> insertAtEnd(newTeam);
+                    }
+                    else{
+                        std::cout<< "Invalid Team Name\n";
+                    }
+                }
+                else {
+                    std::cout << "Invalid entry \n";
                 }
             }
-            else {
-                std::cout << "Invalid entry \n";
+            else if(validType){
+                std::cout<<"Team Already exists\n";
+            }
+            else{
+                std::cout<<"Invalid Option\n";
             }
         }
         else if (input == "7"){
@@ -225,7 +273,7 @@ int main() {
                 }
             }
             if (teamEdit!= nullptr){
-                std::cout <<"Would you like to: \n 1: Add a pokemon\n 2: Remove a pokemon\n 3: Change the name \n 'done' to finish editing \n -> ";
+                std::cout <<"Would you like to: \n 1: Add a pokemon\n 2: Remove a pokemon\n 3: Change the name \n 4: Delete Team\n 'done' to finish editing \n 'help' to bring up this menu again\n -> ";
                 std::string editOption = "";
                 getline(std::cin, editOption);
                 while (editOption != "done"){
@@ -260,15 +308,34 @@ int main() {
                         getline(std::cin, newTeamName);
                         teamEdit->changeName(newTeamName);
                     }
+                    else if(editOption == "help"){
+                        std::cout <<"Would you like to: \n 1: Add a pokemon\n 2: Remove a pokemon\n 3: Change the name \n 'done' to finish editing \n 'help' to bring up this menu again\n -> ";
+                    }
+                    else if(editOption == "4"){}
+                    else{
+                        std::cout<<"Not a valid option\n";
+                    }
+                    if(editOption == "4"){
+                        for(int x = 0; x < teamList->itemCount(); x++){
+                            if(teamList->getValueAt(x)->getName() == teamName){
+                                teamList->removeValueAt(x);
+                            }
+                        }
+                        editOption = "done";
+                    }
+                    else{
+                        std::cout << " -> ";
+                        getline(std::cin, editOption);
+                    }
                 }
             }
             else{
-                std::cout<<"Invalid entry";
+                std::cout<<"Invalid Team Name";
             }
 
         }
         else if (input == "8"){
-            std::cout <<"What is the name of the team you would like to fill?";
+            std::cout <<"What is the name of the team you would like to fill?\n -> ";
             std::string teamName = "";
             getline(std::cin, teamName);
             Team* teamEdit= nullptr;
@@ -280,6 +347,12 @@ int main() {
             if (teamEdit!= nullptr){
                 smartTeamFill(teamEdit, pokeList);
             }
+            else{
+                std::cout<<"Invalid Team\n";
+            }
+        }
+        else{
+            std::cout<<"Invalid Option\n";
         }
         std::cout<<" -> ";
         getline(std::cin, input);

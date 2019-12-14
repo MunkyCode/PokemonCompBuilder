@@ -1,4 +1,3 @@
-UWU,Magikarp,Magikarp
-test,Anorith,Conkeldurr,Tyrunt,Moltres,Drilbur,Clamperl
-
-
+UWU,Magikarp
+test,Anorith,Conkeldurr,Tyrunt,Moltres,Drilbur
+alal,Charmander,Noivern,Manaphy,Pangoro,Skuntank
