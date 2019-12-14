@@ -87,7 +87,7 @@ int main() {
             std::string val = "";
             getline(std::cin, val);
             if (val == "one"){
-                std::cout<<"What type would you like to search for? \n";
+                std::cout<<"What type would you like to search for? \n -> ";
                 std::string type = "";
                 getline(std::cin, type);
                 ArrayList<Pokemon*>* subList;
