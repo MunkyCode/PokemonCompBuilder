@@ -172,6 +172,9 @@ class PokemonList{
                     validType=true;
                 }
             }
+            if(!validType){
+                throw std::invalid_argument("Invalid Type");
+            }
             if(validType){
                 for(int x = 0; x < currItemCount; x++){
                     if(array[x]->getType() == type1&&array[x]->getType2()==type2){

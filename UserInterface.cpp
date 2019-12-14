@@ -92,7 +92,7 @@ int main() {
                 getline(std::cin, type);
                 ArrayList<Pokemon*>* subList;
                 try{
-                    subList = pokeList->subList(type,"");
+                    subList = pokeList->subList(type,"null");
                     for(int x = 0; x<subList->itemCount(); x++){
                         std::cout<<subList->getValueAt(x)->toString()<<std::endl;
                     }

@@ -1,0 +1,4 @@
+We choose these type of ADTs for various reasons.
+The Arraylist was an original attempt as being able to store both teams and pokemon. This is a templated arrayList class.
+The PokemonList was the next generation of pokemon storage. It has better functionaliy including finds, sorting on insert, and sub list returns based off type. This is a ArrayList.
+The TypeEffectivness map is what we use to caculate type effectivness for the different teams and pokemon. This is a map with hard coded values. The Keys are the type either as string or int.
