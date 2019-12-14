@@ -119,7 +119,7 @@ int main() {
                     delete(subList);
                 }
                 catch(std::invalid_argument& e){
-                    std::cout<<"Invalid Type\n";
+                    std::cout<<"One or more types is invalid\n";
                 }
 
             }
