@@ -168,7 +168,7 @@ class PokemonList{
             }
             validType = false;
             for(int x = 0; x < 18; x ++){
-                if(type2==types[x]){
+                if(type2==types[x]||type2 == "null"){
                     validType=true;
                 }
             }
